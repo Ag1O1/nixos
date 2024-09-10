@@ -74,6 +74,7 @@
       lutris
     ];
   };
+  services.flatpak.enable = true;
   programs.steam.enable = true;
 
   custom = {
