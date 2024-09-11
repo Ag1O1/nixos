@@ -7,8 +7,8 @@
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #home-manager.url = "github:nix-community/home-manager";
-    #home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, lix-module } @ inputs:
@@ -23,6 +23,7 @@
       modules = [
         ./hosts/default/configuration.nix
         lix-module.nixosModules.default
+        inputs.home-manager.nixosModules.default
       ];
     };
   };

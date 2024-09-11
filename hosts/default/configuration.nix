@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.home-manager.nixosModules.default
       (self + /modules)
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -75,6 +76,12 @@
       obsidian
       atlauncher
     ];
+  };
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    Users = {
+      "amr" = import ./home.nix
+    };
   };
   services.flatpak.enable = true;
 
