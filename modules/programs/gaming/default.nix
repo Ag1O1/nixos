@@ -9,6 +9,8 @@
     environment.systemPackages = with pkgs; [
       mangohud
       lutris
+      wineWowPackages.waylandFull
+      winetricks
     ];
 
     programs.gamemode.enable = true;

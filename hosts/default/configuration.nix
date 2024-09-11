@@ -62,7 +62,10 @@
     description = "Amr";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kdePackages.kate
+      unrar
+      lime3ds
+      hplip
+
       vscode
       thunderbird
       vesktop
