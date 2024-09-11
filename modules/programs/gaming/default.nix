@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs, config, lib, ...}:
 {
   options.custom.gaming = {
     enable = lib.mkEnableOption "gaming";
