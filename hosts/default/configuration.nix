@@ -78,6 +78,8 @@
   custom = {
     firefox.enable = true;
     pipewire.enable = true;
+    gaming.enable = true;
+    nvidia.enable = true;
   };
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
