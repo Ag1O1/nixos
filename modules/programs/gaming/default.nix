@@ -1,9 +1,12 @@
 {pkgs, config, lib, ...}:
-{
-  options.custom.gaming = {
-    enable = lib.mkEnableOption "gaming";
-  };
-  config = lib.mkIf config.custom.gaming.enable {
+
+with lib; let
+  cfg = config.modules.programs.gaming;
+in {
+  #options.modules.programs.gaming = {
+  #  enable = lib.mkEnableOption "gaming";
+  #};
+  config = mkIf cfg.enable {
     programs.steam.enable = true;
     programs.steam.gamescopeSession.enable = true;
     environment.systemPackages = with pkgs; [

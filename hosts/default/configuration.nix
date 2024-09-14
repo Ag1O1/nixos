@@ -9,6 +9,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./packages.nix
       (self + /modules)
     ];
   fileSystems."/run/media/amr/Disk" =
@@ -75,18 +76,7 @@
     description = "Amr";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      unrar
-      lime3ds
-      hplip
 
-      vscode
-      thunderbird
-      vesktop
-      ungoogled-chromium
-      google-chrome
-      microfetch
-      obsidian
-      atlauncher
     ];
   };
 home-manager = {
@@ -97,11 +87,11 @@ home-manager = {
   };
 };
   services.flatpak.enable = true;
-
+  modules.programs.gaming.enable = true;
   custom = {
     firefox.enable = true;
     pipewire.enable = true;
-    gaming.enable = true;
+    #gaming.enable = true;
     nvidia.enable = true;
   };
   # Allow unfree packages
@@ -109,12 +99,7 @@ home-manager = {
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    git
-    gh
-  ];
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
