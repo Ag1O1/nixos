@@ -3,9 +3,9 @@
 with lib; let
   cfg = config.modules.programs.gaming;
 in {
-  #options.modules.programs.gaming = {
-  #  enable = lib.mkEnableOption "gaming";
-  #};
+  options.modules.programs.gaming = {
+    enable = lib.mkEnableOption "gaming";
+  };
   config = mkIf cfg.enable {
     programs.steam.enable = true;
     programs.steam.gamescopeSession.enable = true;
