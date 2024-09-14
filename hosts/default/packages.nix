@@ -8,6 +8,7 @@
     unrar
     lime3ds
     hplip
+    godot_4
 
     vscode
     thunderbird

@@ -9,17 +9,14 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./fs.nix
       ./packages.nix
       (self + /modules)
     ];
-  fileSystems."/run/media/amr/Disk" =
-    { device = "/dev/disk/by-uuid/C0C8B459C8B45000";
-      fsType = "ntfs-3g"; 
-      options = [ "rw" "uid=1000"];
-    };
-  
-  boot.supportedFilesystems = [ "ntfs" ];
-  programs.nix-ld.enable = true;
+
+  security.polkit.enable = true;
+  programs.kdeconnect.enable = true;
+  programs.nix-ld.enable = false;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -27,12 +24,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "Africa/Cairo";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_AG";
     LC_IDENTIFICATION = "en_AG";
