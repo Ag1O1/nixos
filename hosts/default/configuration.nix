@@ -49,13 +49,13 @@
       "amr" = import ./home.nix;
     };
   };
-  
-  modules.programs.gaming.enable = true;
+  modules = {
+    programs.gaming.enable = true;
+    system.hardware.nvidia.enable = true;
+  };
   custom = {
     firefox.enable = true;
     pipewire.enable = true;
-    #gaming.enable = true;
-    nvidia.enable = true;
   };
 
   programs.direnv.enable = true;

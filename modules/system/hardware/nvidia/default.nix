@@ -1,41 +1,78 @@
 {config, pkgs, lib, ...}:
+# REFRENCED FROM RAF'S NYX
 {
-  options.custom.nvidia = {
+  config,
+  pkgs,
+  lib,
+  ...
+}: with lib; let
+  cfg = config.modules.system.hardware.nvidia;
+in {
+  options.modules.system.hardware.nvidia = {
     enable = lib.mkEnableOption "nvidia";
   };
-  config = lib.mkIf config.custom.nvidia.enable {
-    # Enable OpenGL
-    hardware.graphics = {
-      enable = true;
+  config = lib.mkIf cfg.enable {
+    # nvidia drivers are unfree software
+    nixpkgs.config.allowUnfree = true;
+
+    services.xserver = mkMerge [
+      {
+        videoDrivers = ["nvidia"];
+      }
+    ];
+
+    # blacklist nouveau module so that it does not conflict with nvidia drm stuff
+    # also the nouveau performance is godawful, I'd rather run linux on a piece of paper than use nouveau
+    # no offense to nouveau devs, I'm sure they're doing their best and they have my respect for that
+    # but their best does not constitute a usable driver for me
+    boot.blacklistedKernelModules = ["nouveau"];
+
+    environment = {
+      sessionVariables = mkMerge [
+        {LIBVA_DRIVER_NAME = "nvidia";
+        WLR_NO_HARDWARE_CURSORS = "1";
+        #__GLX_VENDOR_LIBRARY_NAME = "nvidia";
+        #GBM_BACKEND = "nvidia-drm"; # breaks firefox apparently
+        }
+      ];
+      systemPackages = with pkgs; [
+        nvtopPackages.nvidia
+
+        # mesa
+        mesa
+
+        # vulkan
+        vulkan-tools
+        vulkan-loader
+        vulkan-validation-layers
+        vulkan-extension-layer
+
+        # libva
+        libva
+        libva-utils
+      ];
     };
 
-    # Load nvidia driver for Xorg and Wayland
-    services.xserver.videoDrivers = ["nvidia"];
+    hardware = {
+      nvidia = {
+        package = mkDefault config.boot.kernelPackages.nvidiaPackages.latest;
+        modesetting.enable = mkDefault true;
 
-    hardware.nvidia = {
+        powerManagement = {
+          enable = mkDefault true;
+          finegrained = mkDefault false;
+        };
 
-      # Modesetting is required.
-      modesetting.enable = true;
+        open = mkDefault false;
+        nvidiaSettings = false; # add nvidia-settings to pkgs, useless on nixos
+        nvidiaPersistenced = true;
+        forceFullCompositionPipeline = true;
+      };
 
-      # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-      # Enable this if you have graphical corruption issues or application crashes after waking
-      # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
-      # of just the bare essentials.
-      powerManagement.enable = false;
-
-      # Fine-grained power management. Turns off GPU when not in use.
-      # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-      powerManagement.finegrained = false;
-
-      # Enable if gpu is supported in https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
-      open = false;
-
-      # Enable the Nvidia settings menu,
-    # accessible via `nvidia-settings`.
-      nvidiaSettings = true;
-
-      # Optionally, you may need to select the appropriate driver version for your specific GPU.
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
+      graphics = {
+        extraPackages = with pkgs; [nvidia-vaapi-driver];
+        extraPackages32 = with pkgs.pkgsi686Linux; [nvidia-vaapi-driver];
+      };
     };
   };
 }
