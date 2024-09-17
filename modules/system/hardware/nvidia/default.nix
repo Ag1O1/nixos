@@ -1,4 +1,3 @@
-{config, pkgs, lib, ...}:
 # REFRENCED FROM RAF'S NYX
 {
   config,

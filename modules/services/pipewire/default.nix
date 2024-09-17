@@ -1,9 +1,11 @@
 {config, nixpkgs, lib, ...}:
-{
-  options.custom.pipewire = {
+with lib; let
+  cfg = config.modules.services.pipewire;
+in {
+  options.modules.services.pipewire = {
     enable = lib.mkEnableOption "pipewire";
   };
-  config = lib.mkIf config.custom.pipewire.enable {
+  config = mkIf cfg.enable {
     # Enable sound with pipewire.
     hardware.pulseaudio.enable = false;
     security.rtkit.enable = true;

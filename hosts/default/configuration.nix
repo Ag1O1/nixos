@@ -50,13 +50,14 @@
     };
   };
   modules = {
-    programs.gaming.enable = true;
-    system.hardware.nvidia.enable = true;
-  };
-  custom = {
+    programs = {
+    gaming.enable = true;
     firefox.enable = true;
-    pipewire.enable = true;
+    };
+    system.hardware.nvidia.enable = true;
+    services.pipewire.enable = true;
   };
+    
 
   programs.direnv.enable = true;
   services = {

@@ -1,5 +1,6 @@
 {config, nixpkgs, pkgs, lib, ...}:
-  let
+  with lib;let
+    cfg = config.modules.programs.firefox;
     lock-false = {
       Value = false;
       Status = "locked";
@@ -10,10 +11,10 @@
     };
   in
 {
-  options.custom.firefox = {
+  options.modules.programs.firefox = {
     enable = lib.mkEnableOption "firefox";
   };
-  config = lib.mkIf config.custom.firefox.enable {
+  config = lib.mkIf cfg.enable {
   programs = {
     firefox = {
       enable = true;
