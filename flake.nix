@@ -10,15 +10,9 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
-  outputs = { self, nixpkgs, ... } @ inputs:
-  let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-  in
-  {
-
+  outputs = { self, nixpkgs, ... } @ inputs:{
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit (inputs) self; };
+      specialArgs = {inherit inputs; };
       modules = [
         ./hosts/default/configuration.nix
         inputs.home-manager.nixosModules.default
