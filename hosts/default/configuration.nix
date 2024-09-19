@@ -13,7 +13,11 @@
       ./packages.nix
       (self + /modules)
     ];
+  
+  #use lix
+  nix.package = pkgs.lix;
 
+  programs.appimage.enable = true;
   security.polkit.enable = true;
   programs.kdeconnect.enable = true;
   programs.nix-ld.enable = false;
@@ -80,10 +84,6 @@
     open-webui.openFirewall = true;
     openssh.enable = true;
   };
-
-
-
-  # Allow unfree packages
   
 
   programs.mtr.enable = true;

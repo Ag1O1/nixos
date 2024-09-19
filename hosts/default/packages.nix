@@ -9,6 +9,8 @@
     lime3ds
     hplip
     godot_4
+    blender
+    
 
     vscode
     thunderbird
