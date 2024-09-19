@@ -17,6 +17,12 @@
   #use lix
   nix.package = pkgs.lix;
 
+  #use chachix
+    nix.settings = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
+
   programs.appimage.enable = true;
   security.polkit.enable = true;
   programs.kdeconnect.enable = true;

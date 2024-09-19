@@ -6,16 +6,18 @@ in {
     enable = lib.mkEnableOption "pipewire";
   };
   config = mkIf cfg.enable {
-    # Enable sound with pipewire.
-    hardware.pulseaudio.enable = false;
-    security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
-      audio.enable = true;
-
-      pulse.enable = true;
-      jack.enable = true;
-      alsa.enable = true;
+      wireplumber = {
+        enable = true;
+        extraConfig = {
+          "10-disable-camera" = {
+            "wireplumber.profiles" = {
+              main."monitor.libcamera" = "disabled";
+            };
+          };
+        };
+      };
     };
   };
 }
