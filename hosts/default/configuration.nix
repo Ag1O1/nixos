@@ -90,7 +90,6 @@
     #open-webui.openFirewall = true;
     openssh.enable = true;
   };
-  PYDANTIC_SKIP_VALIDATING_CORE_SCHEMAS="True";
 
   programs.mtr.enable = true;
   programs.gnupg.agent = {

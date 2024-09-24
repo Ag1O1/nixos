@@ -14,6 +14,9 @@
     })
     kitty
     ryujinx
+    tofi
+    alacritty
+    hyprpaper
 
     vscode
     thunderbird
@@ -23,5 +26,7 @@
     microfetch
     obsidian
     prismlauncher
+
+    nerdfonts
   ];
 }

@@ -17,12 +17,12 @@ in {
   };
   xdg.portal = {
     enable = true;
-    configPackages = mkDefault [
-    cfg.portalPackage
-    ];
+    #configPackages = mkDefault [
+    #cfg.portalPackage
+    #];
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
-      cfg.portalPackage
+      #cfg.portalPackage
     ];
     config = {
       common.default = ["gtk" "hyprland"];
