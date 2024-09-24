@@ -9,8 +9,11 @@
     lime3ds
     hplip
     godot_4
-    blender
-    
+    (blender.override {
+      cudaSupport = true;
+    })
+    kitty
+    ryujinx
 
     vscode
     thunderbird
@@ -19,6 +22,6 @@
     google-chrome
     microfetch
     obsidian
-    atlauncher
+    prismlauncher
   ];
 }

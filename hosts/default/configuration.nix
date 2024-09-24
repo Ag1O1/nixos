@@ -12,7 +12,7 @@
       ./hardware
       ./packages.nix
       #(self + /modules)
-      ../../modules
+      ../../modules/nixos
     ];
   #use lix
   nix.package = pkgs.lix;
@@ -87,10 +87,10 @@
     ollama.enable = true;
     ollama.acceleration = "cuda";
     open-webui.enable = true;
-    open-webui.openFirewall = true;
+    #open-webui.openFirewall = true;
     openssh.enable = true;
   };
-  
+  PYDANTIC_SKIP_VALIDATING_CORE_SCHEMAS="True";
 
   programs.mtr.enable = true;
   programs.gnupg.agent = {
