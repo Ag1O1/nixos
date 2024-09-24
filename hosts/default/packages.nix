@@ -12,11 +12,16 @@
     (blender.override {
       cudaSupport = true;
     })
-    kitty
     ryujinx
     tofi
     alacritty
     hyprpaper
+    slurp
+    grim
+    imagemagick
+    wl-clipboard
+    swappy
+    cbonsai
 
     vscode
     thunderbird
