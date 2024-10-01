@@ -22,6 +22,9 @@
     wl-clipboard
     swappy
     cbonsai
+    gimp
+    kdePackages.wacomtablet
+    libsForQt5.dolphin
 
     vscode
     thunderbird

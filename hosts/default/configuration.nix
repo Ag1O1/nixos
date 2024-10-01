@@ -23,6 +23,10 @@
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 
+  hardware.opentabletdriver = {
+    enable = true;
+    daemon.enable = true;
+  };
   programs.appimage.enable = true;
   security.polkit.enable = true;
   programs.kdeconnect.enable = true;
@@ -76,7 +80,7 @@
       variant = "";
     };
     xserver.enable = true;
-
+    xserver.wacom.enable = true;
     displayManager.sddm.enable = true;
     desktopManager.plasma6.enable = true;
 
