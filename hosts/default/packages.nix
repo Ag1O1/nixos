@@ -25,6 +25,9 @@
     gimp
     kdePackages.wacomtablet
     libsForQt5.dolphin
+    pavucontrol
+    spotify
+    qbittorrent
 
     vscode
     thunderbird
