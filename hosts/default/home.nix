@@ -1,9 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ../../modules/home-manager
+  ];
   home.username = "amr";
   home.homeDirectory = "/home/amr";
-
 
   home.stateVersion = "24.05"; # Please read the comment before changing. (dont change)
 

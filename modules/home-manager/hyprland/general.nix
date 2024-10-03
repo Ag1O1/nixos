@@ -13,8 +13,8 @@
       "HYPRCURSOR_SIZE,24"
     ];
     misc = {
-      "force_default_wallpaper = 0"
-      "disable_hyprland_logo = false" # If true disables the random hyprland logo / anime girl background. :(
+      force_default_wallpaper = 0;
+      disable_hyprland_logo = false; # If true disables the random hyprland logo / anime girl background. :(
     };
     input = {
       kb_layout = "us,eg";
@@ -24,16 +24,16 @@
       #kb_rules =
 
       follow_mouse = 1;
-      accel_profile = flat;
+      accel_profile = "flat";
       sensitivity = 0.1;
 
-      touchpad {
-        natural_scroll = false
+      touchpad = {
+        natural_scroll = false;
       };
     };
 
     gestures = {
-      "workspace_swipe = false"
+      workspace_swipe = false;
     };
   };
 }

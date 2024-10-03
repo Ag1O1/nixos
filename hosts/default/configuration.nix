@@ -58,6 +58,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
   home-manager = {
+    backupFileExtension = "backup";
     extraSpecialArgs = {inherit inputs;};
     users = {
       "amr" = import ./home.nix;
@@ -82,7 +83,7 @@
     xserver.enable = true;
     xserver.wacom.enable = true;
     displayManager.sddm.enable = true;
-    xserver.desktopManager.cinnamon.enable = true;
+    #xserver.desktopManager.cinnamon.enable = true;
     #desktopManager.plasma6.enable = true;
 
     flatpak.enable = true;

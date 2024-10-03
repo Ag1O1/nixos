@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:{
   wayland.windowManager.hyprland.settings = {
@@ -16,8 +17,8 @@
         "$mainMod, R, exec, $menu"
         "$mainMod, P, pseudo, "
         "$mainMod, J, togglesplit, "
-        ",Print, exec, ${pkgs.grim}/bin/grim -g ${pkgs.slurp}/bin/slurp - | convert - - shave 1x1 PNG:- | wl-copy"
-        "SHIFT, Print, exec , ${pkgs.grim}/bin/grim -g ${pkgs.slurp}/bin/slurp - | convert - - shave 1x1 PNG:- | ${pkgs.slurp}/bin/slurp -f -"
+        ",Print, exec, ${pkgs.grimblast}/bin/grimblast copy area"
+        "SHIFT, Print, exec , ${pkgs.grimbluwuast}/bin/grimblast save area - | ${pkgs.satty}/bin/satty -f -"
 
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
@@ -26,8 +27,8 @@
 
         "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
-        "mainMod, mouse_down, workspace, e+1"
-        "mainMod, mouse_up, workspace, e-1"
+        "$mainMod, mouse_down, workspace, e+1"
+        "$mainMod, mouse_up, workspace, e-1"
 
       ]
     ++ (
@@ -52,7 +53,7 @@
     ",KP_UP,exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
     ",KP_Home, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
     ",KP_Prior, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-    ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-    ]
+    #",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+    ];
   };
 }
