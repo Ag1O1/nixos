@@ -82,6 +82,7 @@
     xserver.enable = true;
     xserver.wacom.enable = true;
     displayManager.sddm.enable = true;
+    xserver.desktopManager.cinnamon.enable = true;
     #desktopManager.plasma6.enable = true;
 
     flatpak.enable = true;
