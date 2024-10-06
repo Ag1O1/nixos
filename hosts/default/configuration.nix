@@ -12,7 +12,6 @@
       ./hardware
       ./packages.nix
       (self + /modules)
-      #../../modules/nixos
       (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" "amr"])
     ];
   #use lix
