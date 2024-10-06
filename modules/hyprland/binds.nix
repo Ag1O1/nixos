@@ -17,6 +17,7 @@
         "$mainMod, R, exec, $menu"
         "$mainMod, P, pseudo, "
         "$mainMod, J, togglesplit, "
+
         ",Print, exec, ${pkgs.grimblast}/bin/grimblast copy area"
         "SHIFT, Print, exec , ${pkgs.grimblast}/bin/grimblast save area - | ${pkgs.satty}/bin/satty -f -"
 

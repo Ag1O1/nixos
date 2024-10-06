@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, self, lib, ... }:
 
 {
   
@@ -11,8 +11,9 @@
       ./hardware-configuration.nix
       ./hardware
       ./packages.nix
-      #(self + /modules)
-      ../../modules/nixos
+      (self + /modules)
+      #../../modules/nixos
+      (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" "amr"])
     ];
   #use lix
   nix.package = pkgs.lix;
