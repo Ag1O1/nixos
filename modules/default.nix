@@ -5,5 +5,6 @@
       ./services
       ./system
       ./hyprland
+      ./theming
     ];
 }

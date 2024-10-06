@@ -10,5 +10,5 @@
 
     gtk.iconTheme.package = pkgs.gruvbox-plus-icons;
     gtk.iconTheme.name = "GruvboxPlus";
-  }
+  };
 }

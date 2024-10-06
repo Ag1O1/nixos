@@ -1,7 +1,7 @@
 {
   imports =
     [
-      ./gtx
+      ./gtk
       ./qt
     ];
 }
