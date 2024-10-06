@@ -3,7 +3,7 @@
   lib,
   ...
 }:{
-  wayland.windowManager.hyprland.settings = {
+  hm.wayland.windowManager.hyprland.settings = {
     monitor = ",preferred,auto,auto";
     "$terminal" = "alacritty";
     "$fileManager" = "dolphin";
@@ -18,9 +18,9 @@
     };
     input = {
       kb_layout = "us,eg";
-      #kb_variant =
+      #kb_variant = ",qwerty";
       #kb_model =
-      #kb_options =
+      kb_options = "grp:win_space_toggle";
       #kb_rules =
 
       follow_mouse = 1;

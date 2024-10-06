@@ -4,7 +4,7 @@
   pkgs,
   ...
 }:{
-  wayland.windowManager.hyprland.settings = {
+  hm.wayland.windowManager.hyprland.settings = {
     exec-once = [
       "[workspace 4 silent] vesktop"
       "ngrok http --url=goose-neat-sponge.ngrok-free.app 8080"

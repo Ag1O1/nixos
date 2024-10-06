@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../modules/home-manager
+    #../../modules/home-manager
   ];
   home.username = "amr";
   home.homeDirectory = "/home/amr";

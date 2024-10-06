@@ -1,6 +1,16 @@
 {pkgs, inputs, ... }: let
   pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
+  imports =
+    [
+      ./binds.nix
+      ./decorations.nix
+      ./exec.nix
+      ./general.nix
+    ];
+  hm.wayland.windowManager.hyprland.enable = true;
+  hm.home.sessionVariables.NIXOS_OZONE_WL = "1";
+  
   hardware.opengl = {
     package = pkgs-unstable.mesa.drivers;
 

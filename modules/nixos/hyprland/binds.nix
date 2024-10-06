@@ -4,7 +4,7 @@
   pkgs,
   ...
 }:{
-  wayland.windowManager.hyprland.settings = {
+  hm.wayland.windowManager.hyprland.settings = {
     "$mainMod" = "SUPER"; # Sets "Windows" key as main modifier
     bind =
       [
