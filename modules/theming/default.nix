@@ -2,5 +2,6 @@
   imports =
     [
       ./gtx
+      ./qt
     ];
 }
