@@ -1,4 +1,7 @@
-{pkgs, ...}: {
+{pkgs, ...}:
+let 
+  gruvboxplus = import ./gruvbox-plus.nix {inherit pkgs;};
+in {
   hm = {
     gtk.enable = true;
 
@@ -8,7 +11,7 @@
     gtk.theme.package = pkgs.adw-gtk3;
     gtk.theme.name = "adw-gtk3";
 
-    gtk.iconTheme.package = pkgs.gruvbox-plus-icons;
+    gtk.iconTheme.package = gruvboxplus;
     gtk.iconTheme.name = "GruvboxPlus";
   };
 }
