@@ -63,6 +63,9 @@
     users = {
       "amr" = import ./home.nix;
     };
+    extraSpecialArgs = {
+      inherit nix-colors;
+    };
   };
   modules = {
     programs = {
