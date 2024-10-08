@@ -2,7 +2,7 @@
 let 
   gruvboxplus = import ./gruvbox-plus.nix {inherit pkgs;};
 in {
-  imports = [/css.nix];
+  imports = [./css.nix];
   hm = {
     gtk.enable = true;
 

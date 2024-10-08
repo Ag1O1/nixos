@@ -1,8 +1,8 @@
-{...}:
+{config,...}:
 let
   colors = config.colorScheme.palette;
 in {
-  hm.home.file.".config/gtk-4.0/gtk.css".text = ''
+  hm.home.file.".config/gtk-4.0/colors.css".text = ''
     @define-color accent_color #83a598;
     @define-color accent_bg_color mix(#83a598, #282828,0.3);
     @define-color accent_fg_color #d5c4a1;
@@ -81,5 +81,6 @@ in {
     @define-color dark_3 #282828;
     @define-color dark_4 mix(#282828,black,0.2);
     @define-color dark_5 mix(#282828,black,0.4);
-  ''
+  '';
+  
 }
