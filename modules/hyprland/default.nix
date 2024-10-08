@@ -11,11 +11,11 @@ in {
   hm.wayland.windowManager.hyprland.enable = true;
   hm.home.sessionVariables.NIXOS_OZONE_WL = "1";
   
-  hardware.opengl = {
+  hardware.graphics = {
     package = pkgs-unstable.mesa.drivers;
 
     # if you also want 32-bit support (e.g for Steam)
-    driSupport32Bit = true;
+    enable32Bit = true;
     package32 = pkgs-unstable.pkgsi686Linux.mesa.drivers;
   };
   programs.hyprland = {

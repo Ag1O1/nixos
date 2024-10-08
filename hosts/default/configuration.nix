@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, self, lib, ... }:
+{ config, pkgs, inputs, self, lib, nix-colors, ... }:
 
 {
   
@@ -71,6 +71,7 @@
     programs = {
     gaming.enable = true;
     firefox.enable = true;
+    foot.enable = true;
     };
     system.hardware.nvidia.enable = true;
     services.pipewire.enable = true;
