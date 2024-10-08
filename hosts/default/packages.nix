@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    tree
     vim
     wget
     git
@@ -40,5 +41,9 @@
     prismlauncher
 
     nerdfonts
+  ];
+  fonts.packages = with pkgs; [
+    nerdfonts
+    cascadia-code
   ];
 }

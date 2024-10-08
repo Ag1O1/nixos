@@ -2,6 +2,7 @@
 
 with lib; let
   cfg = config.modules.programs.foot;
+  colors = config.colorScheme.palette;
 in {
   options.modules.programs.foot = {
     enable = lib.mkEnableOption "foot";
@@ -16,10 +17,10 @@ in {
             app-id = "foot";
             title = "foot";
             locked-title = "no";
-            shell = "${self'.packages.fish}/bin/fish";
+            shell = "${pkgs.fish}/bin/fish";
 
-            font = "Iosevka Nerd Font:size=14";
-            font-bold = "Iosevka Nerd Font:size=14";
+            font = "CascadiaCode:size=14";
+            font-bold = "CascadiaCode:size=14";
 
             selection-target = "primary";
             dpi-aware = false;

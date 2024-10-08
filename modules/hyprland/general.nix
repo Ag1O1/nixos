@@ -5,7 +5,7 @@
 }:{
   hm.wayland.windowManager.hyprland.settings = {
     monitor = ",preferred,auto,auto";
-    "$terminal" = "alacritty";
+    "$terminal" = "foot";
     "$fileManager" = "dolphin";
     "$menu" = "tofi-drun | xargs hyprctl dispatch exec --";
     env = [
