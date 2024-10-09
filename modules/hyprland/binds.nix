@@ -18,8 +18,8 @@
         "$mainMod, P, pseudo, "
         "$mainMod, J, togglesplit, "
 
-        ",Print, exec, ${pkgs.grimblast}/bin/grimblast copy area"
-        "SHIFT, Print, exec , ${pkgs.grimblast}/bin/grimblast save area - | ${pkgs.satty}/bin/satty -f -"
+        ",Print, exec, ${lib.getExe pkgs.grimblast} copy area"
+        "SHIFT, Print, exec , ${lib.getExe pkgs.grimblast} save area - | ${lib.getExe pkgs.satty} -f -"
 
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"

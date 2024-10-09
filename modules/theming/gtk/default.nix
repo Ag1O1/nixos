@@ -3,6 +3,8 @@ let
   gruvboxplus = import ./gruvbox-plus.nix {inherit pkgs;};
 in {
   imports = [./css.nix];
+  
+  programs.dconf.enable = true; # NOTE: we need this or gtk breaks
   hm = {
     gtk.enable = true;
 

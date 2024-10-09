@@ -30,6 +30,8 @@
     spotify
     qbittorrent
     libsForQt5.ark
+    telegram-desktop
+    bc
 
     vscode
     thunderbird
