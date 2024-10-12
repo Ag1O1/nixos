@@ -1,20 +1,41 @@
-{pkgs, ...}:
+{pkgs, inputs, ...}:
 let 
   gruvboxplus = import ./gruvbox-plus.nix {inherit pkgs;};
 in {
   imports = [./css.nix];
   
-  programs.dconf.enable = true; # NOTE: we need this or gtk breaks
+  programs.dconf.enable = true;
   hm = {
-    gtk.enable = true;
+    gtk = {
+      enable = true;
 
-    gtk.cursorTheme.package = pkgs.bibata-cursors;
-    gtk.cursorTheme.name = "Bibata-Modern-Ice";
+      cursorTheme.package = pkgs.bibata-cursors;
+      cursorTheme.name = "Bibata-Modern-Ice";
 
-    gtk.theme.package = pkgs.adw-gtk3;
-    gtk.theme.name = "adw-gtk3";
+      theme.package = pkgs.adw-gtk3;
+      theme.name = "adw-gtk3";
+      
+      iconTheme.package = gruvboxplus;
+      iconTheme.name = "GruvboxPlus";
+    };
+    home.pointerCursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      gtk.enable = true;
+      x11.enable = true;
+    };
 
-    gtk.iconTheme.package = gruvboxplus;
-    gtk.iconTheme.name = "GruvboxPlus";
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
   };
 }
+

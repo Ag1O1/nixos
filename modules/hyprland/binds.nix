@@ -14,6 +14,7 @@
         "$mainMod, E, exec, $fileManager"
         "$mainMod, F, togglefloating,"
         "$mainMod SHIFT, F,fullscreen,"
+        "$mainMod ALT, F, fullscreenstate, -1 2"
         "$mainMod, R, exec, $menu"
         "$mainMod, P, pseudo, "
         "$mainMod, J, togglesplit, "

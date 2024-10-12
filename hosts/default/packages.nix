@@ -32,6 +32,8 @@
     libsForQt5.ark
     telegram-desktop
     bc
+    minesweep-rs
+    protonplus
 
     vscode
     thunderbird

@@ -12,6 +12,7 @@
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
+    niqspkgs.url = "git+https://github.com/diniamo/niqspkgs";
   };
 
   outputs = { self, nixpkgs, nix-colors, ... } @ inputs:{
