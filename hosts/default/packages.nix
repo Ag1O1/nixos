@@ -45,9 +45,12 @@
     microfetch
     obsidian
     prismlauncher
+    obs-studio
 
     nerdfonts
-
+    # Hyprland stuff
+    kdePackages.qtwayland
+    libsForQt5.qt5.qtwayland
   ];
   fonts.packages = with pkgs; [
     nerdfonts

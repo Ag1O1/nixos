@@ -12,7 +12,7 @@
       "hyprpaper"
       "firefox-beta"
       "${lib.getExe pkgs.mako}"
-      "${pkgs.pantheon.pantheon-agent-polkit}/libexec/policykit-1-pantheon"
+      #"${pkgs.pantheon.pantheon-agent-polkit}/libexec/policykit-1-pantheon"
     ];
 
     windowrulev2 = [

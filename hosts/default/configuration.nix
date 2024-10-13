@@ -22,7 +22,23 @@
     substituters = ["https://hyprland.cachix.org"];
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
-
+  
+  environment.systemPackages = [  inputs.umu.packages.${pkgs.system}.umu  ];
+  systemd.user.services.polkit-pantheon-authentication-agent-1 = {
+      description = "Pantheon PolicyKit agent";
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.pantheon.pantheon-agent-polkit}/libexec/policykit-1-pantheon/io.elementary.desktop.agent-polkit";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+      wantedBy = ["graphical-session.target"];
+      wants = ["graphical-session.target"];
+      after = ["graphical-session.target"];
+    };
+  programs.fish.enable = true;
+  
   hardware.opentabletdriver = {
     enable = true;
     daemon.enable = true;
@@ -54,6 +70,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.amr = {
     isNormalUser = true;
+    shell = pkgs.fish;
     description = "Amr";
     extraGroups = [ "networkmanager" "wheel" ];
   };
@@ -90,7 +107,7 @@
     #xserver.desktopManager.cinnamon.enable = true;
     #desktopManager.plasma6.enable = true;
 
-    #flatpak.enable = true;
+    flatpak.enable = true;
 
     printing.enable = true;
     libinput.enable = true;

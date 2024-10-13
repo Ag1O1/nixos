@@ -13,6 +13,10 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     niqspkgs.url = "git+https://github.com/diniamo/niqspkgs";
+    umu= {
+      url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nix-colors, ... } @ inputs:{
