@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   qt = {
   enable = true;
-  style = "adwaita";
-  platformTheme = "gnome";
+  style = "adwaita-dark";
+  platformTheme = "qt5ct";
   };
   hm.home = {
       packages = with pkgs; [

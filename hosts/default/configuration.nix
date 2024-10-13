@@ -90,7 +90,7 @@
     #xserver.desktopManager.cinnamon.enable = true;
     #desktopManager.plasma6.enable = true;
 
-    flatpak.enable = true;
+    #flatpak.enable = true;
 
     printing.enable = true;
     libinput.enable = true;

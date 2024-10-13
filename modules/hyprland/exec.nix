@@ -11,6 +11,8 @@
       "hyprctl setcursor Bibata-Modern-Ice 24"
       "hyprpaper"
       "firefox-beta"
+      "${lib.getExe pkgs.mako}"
+      "${pkgs.pantheon.pantheon-agent-polkit}/libexec/policykit-1-pantheon"
     ];
 
     windowrulev2 = [

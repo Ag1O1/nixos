@@ -25,7 +25,8 @@
     cbonsai
     gimp
     kdePackages.wacomtablet
-    libsForQt5.dolphin
+    #libsForQt5.dolphin
+    nautilus #file manager
     pavucontrol
     spotify
     qbittorrent
@@ -34,6 +35,7 @@
     bc
     minesweep-rs
     protonplus
+    bottles
 
     vscode
     thunderbird
@@ -45,6 +47,7 @@
     prismlauncher
 
     nerdfonts
+
   ];
   fonts.packages = with pkgs; [
     nerdfonts

@@ -6,7 +6,7 @@
   hm.wayland.windowManager.hyprland.settings = {
     monitor = ",preferred,auto,auto";
     "$terminal" = "foot";
-    "$fileManager" = "dolphin";
+    "$fileManager" = "nautilus";
     "$menu" = "tofi-drun | xargs hyprctl dispatch exec --";
     env = [
       "XCURSOR_SIZE,24"
