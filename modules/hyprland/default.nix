@@ -7,6 +7,7 @@ in {
       ./decorations.nix
       ./exec.nix
       ./general.nix
+      ./ags
     ];
   hm.wayland.windowManager.hyprland.enable = true;
   hm.home.sessionVariables.NIXOS_OZONE_WL = "1";
