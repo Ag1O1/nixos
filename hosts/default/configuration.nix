@@ -23,7 +23,9 @@
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
   
-  environment.systemPackages = [  inputs.umu.packages.${pkgs.system}.umu  ];
+  environment.systemPackages = [  
+    inputs.umu.packages.${pkgs.system}.umu
+    ];
   systemd.user.services.polkit-pantheon-authentication-agent-1 = {
       description = "Pantheon PolicyKit agent";
       serviceConfig = {

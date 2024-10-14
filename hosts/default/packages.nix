@@ -46,6 +46,7 @@
     obsidian
     prismlauncher
     obs-studio
+    vlc
 
     nerdfonts
     # Hyprland stuff
