@@ -19,8 +19,8 @@
         "$mainMod, P, pseudo, "
         "$mainMod, J, togglesplit, "
 
-        ",Print, exec, ${lib.getExe pkgs.grimblast} copy area"
-        "SHIFT, Print, exec , ${lib.getExe pkgs.grimblast} save area - | ${lib.getExe pkgs.satty} -f -"
+        ",Print, exec, ${lib.getExe pkgs.grimblast} --freeze copy area"
+        "SHIFT, Print, exec , ${lib.getExe pkgs.grimblast} --freeze save area - | ${lib.getExe pkgs.satty} -f -"
 
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"

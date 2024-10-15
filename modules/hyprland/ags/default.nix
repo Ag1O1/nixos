@@ -1,9 +1,10 @@
 { inputs, pkgs, ... }:
 {
+  hm = {
   # add the home manager module
   imports = [ inputs.ags.homeManagerModules.default ];
 
-  hm.programs.ags = {
+  programs.ags = {
     enable = true;
 
     # null or path, leave as null if you don't want hm to manage the config
@@ -15,5 +16,6 @@
       webkitgtk
       accountsservice
     ];
+  };
   };
 }

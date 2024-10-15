@@ -18,10 +18,10 @@
       url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #ags = {
-    #  url = "github:Aylur/ags";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    ags = {
+      url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nix-colors, ... } @ inputs:{

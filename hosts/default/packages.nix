@@ -47,6 +47,8 @@
     prismlauncher
     obs-studio
     vlc
+    bun
+    davinci-resolve
 
     nerdfonts
     # Hyprland stuff

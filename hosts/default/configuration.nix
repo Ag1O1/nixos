@@ -119,7 +119,6 @@
     #open-webui.openFirewall = true;
     openssh.enable = true;
   };
-
   programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;

@@ -32,6 +32,10 @@
         natural_scroll = false;
       };
     };
+    cursor = {
+      no_hardware_cursors = false;
+      allow_dumb_copy = true;
+    };
 
     gestures = {
       workspace_swipe = false;

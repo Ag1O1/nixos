@@ -5,6 +5,7 @@
 }:{
   hm.wayland.windowManager.hyprland.settings = {
     general = {
+      
       gaps_in = 3;
       gaps_out = 6;
 
@@ -18,7 +19,7 @@
       resize_on_border = false;
 
       # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
-      allow_tearing = false;
+      allow_tearing = true;
 
       layout = "dwindle";
     };
