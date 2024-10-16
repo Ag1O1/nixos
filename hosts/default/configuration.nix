@@ -52,7 +52,8 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
   networking.hostName = "nixos"; # Define your hostname.
-
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
   # Enable networking
   networking.networkmanager.enable = true;
 

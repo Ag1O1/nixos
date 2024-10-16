@@ -6,7 +6,7 @@
   ];
   home.username = "amr";
   home.homeDirectory = "/home/amr";
-
+  services.network-manager-applet.enable = true;
   home.stateVersion = "24.05"; # Please read the comment before changing. (dont change)
 
   # The home.packages option allows you to install Nix packages into your

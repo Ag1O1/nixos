@@ -49,6 +49,10 @@
     vlc
     bun
     davinci-resolve
+    udiskie
+    gvfs
+    udisks
+    usbutils
 
     nerdfonts
     # Hyprland stuff

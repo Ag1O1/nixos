@@ -7,7 +7,7 @@
     monitor = ",preferred,auto,auto";
     "$terminal" = "foot";
     "$fileManager" = "nautilus";
-    "$menu" = "tofi-drun | xargs hyprctl dispatch exec --";
+    "$menu" = "ags -c ~/.config/ags/config.js & ags -t applauncher";
     env = [
       "XCURSOR_SIZE,24"
       "HYPRCURSOR_SIZE,24"

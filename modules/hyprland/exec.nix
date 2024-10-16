@@ -12,6 +12,7 @@
       "hyprpaper"
       "firefox-beta"
       "ags -c ~/.config/ags/config.js"
+      "${lib.getExe pkgs.udiskie}"
       #"${lib.getExe pkgs.mako}"
       "${pkgs.pantheon.pantheon-agent-polkit}/libexec/policykit-1-pantheon/io.elementary.desktop.agent-polkit"
     ];
@@ -19,7 +20,7 @@
     windowrulev2 = [
       "workspace 4 silent,class:^(vesktop)$"
       "suppressevent maximize, class:.*" # You'll probably like this. 
-      "immediate, class:^(American Truck Simulator)$"
+      #"immediate, class:^(American Truck Simulator)$"
     ];
   };
 }
