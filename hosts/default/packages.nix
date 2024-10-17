@@ -36,6 +36,13 @@
     minesweep-rs
     protonplus
     bottles
+    fzf
+    atuin
+    dust
+    btop
+    bat
+    tldr
+    eza
 
     vscode
     thunderbird
