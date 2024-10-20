@@ -26,7 +26,7 @@
 
       follow_mouse = 1;
       accel_profile = "flat";
-      sensitivity = 0.1;
+      sensitivity = 0;
 
       touchpad = {
         natural_scroll = false;
@@ -34,8 +34,7 @@
     };
     cursor = {
       no_hardware_cursors = false; 
-      no_warps = true;
-      allow_dumb_copy = true;
+      #allow_dumb_copy = true;
     };
 
     gestures = {

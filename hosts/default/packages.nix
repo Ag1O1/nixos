@@ -28,7 +28,6 @@
     libsForQt5.dolphin
     nautilus #file manager
     pavucontrol
-    spotify
     qbittorrent
     libsForQt5.ark
     telegram-desktop

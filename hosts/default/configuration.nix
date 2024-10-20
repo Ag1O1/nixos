@@ -13,6 +13,7 @@
       ./packages.nix
       (self + /modules)
       (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" "amr"])
+      inputs.spicetify-nix.nixosModules.default
     ];
   #use lix
   nix.package = pkgs.lix;
@@ -98,7 +99,7 @@
     system.hardware.nvidia.enable = true;
     services.pipewire.enable = true;
   };
-    
+  programs.neovim.enable = true;
 
   programs.direnv.enable = true;
   services = {
