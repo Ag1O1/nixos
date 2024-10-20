@@ -6,7 +6,7 @@
   hm.wayland.windowManager.hyprland.settings = {
     monitor = ",preferred,auto,auto";
     "$terminal" = "foot";
-    "$fileManager" = "nautilus";
+    "$fileManager" = "dolphin";
     "$menu" = "ags -c ~/.config/ags/config.js & ags -t applauncher";
     env = [
       "XCURSOR_SIZE,24"
@@ -33,7 +33,8 @@
       };
     };
     cursor = {
-      no_hardware_cursors = false;
+      no_hardware_cursors = false; 
+      no_warps = true;
       allow_dumb_copy = true;
     };
 

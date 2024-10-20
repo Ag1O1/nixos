@@ -56,6 +56,8 @@
   services.udisks2.enable = true;
   # Enable networking
   networking.networkmanager.enable = true;
+  virtualisation.virtualbox.host.enable = true;
+  #virtualisation.virtualbox.host.enableKvm = true;
 
   time.timeZone = "Africa/Cairo";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -116,7 +118,7 @@
     libinput.enable = true;
     ollama.enable = true;
     ollama.acceleration = "cuda";
-    open-webui.enable = true;
+    #open-webui.enable = true;
     #open-webui.openFirewall = true;
     openssh.enable = true;
   };

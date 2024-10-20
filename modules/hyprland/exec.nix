@@ -12,7 +12,7 @@
       "hyprpaper"
       "firefox-beta"
       "ags -c ~/.config/ags/config.js"
-      "${lib.getExe pkgs.udiskie}"
+      "${lib.getExe' pkgs.udiskie "udiskie"}"
       #"${lib.getExe pkgs.mako}"
       "${pkgs.pantheon.pantheon-agent-polkit}/libexec/policykit-1-pantheon/io.elementary.desktop.agent-polkit"
     ];

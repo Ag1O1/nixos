@@ -7,7 +7,7 @@
     gh
     ngrok
     unrar
-    lime3ds
+    #lime3ds fails to build
     hplip
     godot_4
     (blender.override {
@@ -25,7 +25,7 @@
     cbonsai
     gimp
     kdePackages.wacomtablet
-    #libsForQt5.dolphin
+    libsForQt5.dolphin
     nautilus #file manager
     pavucontrol
     spotify
@@ -43,6 +43,7 @@
     bat
     tldr
     eza
+    virtualbox
 
     vscode
     thunderbird

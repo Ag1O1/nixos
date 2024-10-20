@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   qt = {
-  enable = true;
-  style = "adwaita-dark";
-  platformTheme = "qt5ct";
+    enable = true;
+    platformTheme = "gtk2";
+    style = "gtk2";
   };
   hm.home = {
       packages = with pkgs; [
