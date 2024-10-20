@@ -95,6 +95,7 @@
     gaming.enable = true;
     firefox.enable = true;
     foot.enable = true;
+    spotify.enable = true;
     };
     system.hardware.nvidia.enable = true;
     services.pipewire.enable = true;

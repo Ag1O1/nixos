@@ -4,5 +4,6 @@
       ./firefox
       ./foot
       ./gaming
+      ./spicetify
     ];
 }

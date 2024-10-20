@@ -1,4 +1,4 @@
-{lib,config,...}:
+{lib,config,inputs,pkgs,...}:
 with lib; let
   cfg = config.modules.programs.spotify;
 in {
