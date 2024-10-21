@@ -78,7 +78,7 @@
     isNormalUser = true;
     shell = pkgs.fish;
     description = "Amr";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
   };
   home-manager = {
     backupFileExtension = "backup";

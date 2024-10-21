@@ -5,5 +5,6 @@
       ./foot
       ./gaming
       ./spicetify
+      ./vm
     ];
 }
