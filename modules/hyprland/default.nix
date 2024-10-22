@@ -9,9 +9,16 @@ in {
       ./general.nix
       ./ags
     ];
-  hm.wayland.windowManager.hyprland.enable = true;
-  hm.home.sessionVariables.NIXOS_OZONE_WL = "1";
-  
+  hm = {
+  wayland.windowManager.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    #plugins = [
+    #inputs.hyprsplit.packages."${pkgs.system}".hyprsplit
+    #];
+  };
+  home.sessionVariables.NIXOS_OZONE_WL = "1";
+  };
   hardware.graphics = {
     package = pkgs-unstable.mesa.drivers;
 

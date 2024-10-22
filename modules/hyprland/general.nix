@@ -6,11 +6,13 @@
   ...
 }:{
   hm.wayland.windowManager.hyprland = {
-    #plugins = [inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces];
     settings = {
-      monitor = ",preferred,auto,auto";
+      monitor = [
+        "HDMI-A-1, 1920x1080@60, 0x0, 1"
+        "DVI-D-1, 1600x900@60, 1920x90, 1"
+      ];
       "$terminal" = "foot";
-      "$fileManager" = "dolphin";
+      "$fileManager" = "nautilus";
       "$menu" = "ags -c ~/.config/ags/config.js & ags -t applauncher";
       env = [
         "XCURSOR_SIZE,24"
@@ -38,7 +40,7 @@
       };
       cursor = {
         no_hardware_cursors = false; 
-        #allow_dumb_copy = true;
+        allow_dumb_copy = true;
       };
 
       gestures = {

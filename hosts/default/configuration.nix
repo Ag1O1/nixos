@@ -17,7 +17,7 @@
     ];
   #use lix
   nix.package = pkgs.lix;
-
+  programs.seahorse.enable = true; #possibly needed for password management eg. NetworkManager
   #use chachix
     nix.settings = {
     substituters = ["https://hyprland.cachix.org"];
@@ -81,7 +81,7 @@
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
   };
   home-manager = {
-    backupFileExtension = "backup";
+    backupFileExtension = "backup3";
     extraSpecialArgs = {inherit inputs;};
     users = {
       "amr" = import ./home.nix;
@@ -92,10 +92,12 @@
   };
   modules = {
     programs = {
+    vm.enable = true;
     gaming.enable = true;
     firefox.enable = true;
     foot.enable = true;
     spotify.enable = true;
+    discord.enable = true;
     };
     system.hardware.nvidia.enable = true;
     services.pipewire.enable = true;
@@ -110,9 +112,6 @@
     };
     xserver.enable = true;
     xserver.wacom.enable = true;
-    #displayManager.sddm.enable = true;
-    #xserver.desktopManager.cinnamon.enable = true;
-    #desktopManager.plasma6.enable = true;
 
     flatpak.enable = true;
 
