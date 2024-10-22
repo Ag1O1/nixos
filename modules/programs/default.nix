@@ -6,5 +6,6 @@
       ./gaming
       ./spicetify
       ./vm
+      ./discord
     ];
 }

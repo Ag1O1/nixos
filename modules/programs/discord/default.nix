@@ -1,5 +1,5 @@
 {
-  osConfig,
+  config,
   lib,
   pkgs,
   ...
@@ -25,6 +25,6 @@ in {
     enable = lib.mkEnableOption "discord";
   };
   config = mkIf cfg.enable {
-    home.packages = [discord-wrapped];
+    environment.systemPackages = [discord-wrapped];
   };
 }
