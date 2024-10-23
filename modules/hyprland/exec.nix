@@ -17,7 +17,7 @@
     ];
 
     windowrulev2 = [
-      "workspace 4 silent,class:^(vesktop)$"
+      "workspace 4 silent,class:^(discord)$"
       "suppressevent maximize, class:.*" # You'll probably like this. 
       #"immediate, class:^(American Truck Simulator)$"
     ];

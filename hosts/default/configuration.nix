@@ -123,6 +123,7 @@
     #open-webui.openFirewall = true;
     openssh.enable = true;
   };
+  virtualisation.waydroid.enable = true;
   programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;

@@ -34,6 +34,7 @@
     bat
     tldr
     eza
+    uget #download manager
 
     vscode
     thunderbird
