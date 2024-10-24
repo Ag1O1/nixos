@@ -121,9 +121,11 @@
       nvf.enable = true;
     };
     system.hardware.nvidia.enable = true;
-    services.pipewire.enable = true;
+    services = {
+      pipewire.enable = true;
+      bluetooth.enable = true;
+    };
   };
-  programs.neovim.enable = true;
 
   programs.direnv.enable = true;
   services = {

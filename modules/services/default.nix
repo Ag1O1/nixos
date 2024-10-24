@@ -1,6 +1,6 @@
 {
-  imports =
-    [
-      ./pipewire
-    ];
+  imports = [
+    ./pipewire
+    ./bluetooth
+  ];
 }

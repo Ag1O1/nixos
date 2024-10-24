@@ -22,7 +22,9 @@ in {
           };
           languages = {
             nix.enable = true;
+            nix.lsp.enable = true;
             ts.enable = true;
+            ts.lsp.enable = true;
             markdown.enable = true;
           };
         };
