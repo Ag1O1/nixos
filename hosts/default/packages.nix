@@ -36,7 +36,7 @@
     eza
     uget #download manager
     scrcpy
-    zdoom #doom
+    nixfmt-rfc-style
 
     vscode
     thunderbird

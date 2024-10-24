@@ -2,46 +2,57 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, self, lib, nix-colors, ... }:
+{
+  pkgs,
+  inputs,
+  self,
+  lib,
+  nix-colors,
+  ...
+}:
 
 {
-  
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./hardware
-      ./packages.nix
-      (self + /modules)
-      (lib.mkAliasOptionModule ["hm"] ["home-manager" "users" "amr"])
-      inputs.spicetify-nix.nixosModules.default
-    ];
+
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./hardware
+    ./packages.nix
+    (self + /modules)
+    (lib.mkAliasOptionModule [ "hm" ] [
+      "home-manager"
+      "users"
+      "amr"
+    ])
+    inputs.spicetify-nix.nixosModules.default
+  ];
   #use lix
   nix.package = pkgs.lix;
-  programs.seahorse.enable = true; #possibly needed for password management eg. NetworkManager
+  programs.seahorse.enable = true; # possibly needed for password management eg. NetworkManager
   #use chachix
-    nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  nix.settings = {
+    substituters = [ "https://hyprland.cachix.org" ];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
-  
-  environment.systemPackages = [  
+
+  environment.systemPackages = [
     inputs.umu.packages.${pkgs.system}.umu
-    ];
+  ];
   systemd.user.services.polkit-pantheon-authentication-agent-1 = {
-      description = "Pantheon PolicyKit agent";
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.pantheon.pantheon-agent-polkit}/libexec/policykit-1-pantheon/io.elementary.desktop.agent-polkit";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-      wantedBy = ["graphical-session.target"];
-      wants = ["graphical-session.target"];
-      after = ["graphical-session.target"];
+    description = "Pantheon PolicyKit agent";
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.pantheon.pantheon-agent-polkit}/libexec/policykit-1-pantheon/io.elementary.desktop.agent-polkit";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
     };
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+  };
   programs.fish.enable = true;
-  
+
   hardware.opentabletdriver = {
     enable = true;
     daemon.enable = true;
@@ -50,7 +61,10 @@
   security.polkit.enable = true;
   programs.kdeconnect.enable = true;
   programs.nix-ld.enable = false;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   nixpkgs.config.allowUnfree = true;
   networking.hostName = "nixos"; # Define your hostname.
   services.gvfs.enable = true;
@@ -78,11 +92,17 @@
     isNormalUser = true;
     shell = pkgs.fish;
     description = "Amr";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "libvirtd"
+    ];
   };
   home-manager = {
     backupFileExtension = "backup3";
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = {
+      inherit inputs;
+    };
     users = {
       "amr" = import ./home.nix;
     };
@@ -92,13 +112,13 @@
   };
   modules = {
     programs = {
-    vm.enable = true;
-    gaming.enable = true;
-    firefox.enable = true;
-    foot.enable = true;
-    spotify.enable = true;
-    discord.enable = true;
-    nvf.enable = true;
+      vm.enable = true;
+      gaming.enable = true;
+      firefox.enable = true;
+      foot.enable = true;
+      spotify.enable = true;
+      discord.enable = true;
+      nvf.enable = true;
     };
     system.hardware.nvidia.enable = true;
     services.pipewire.enable = true;

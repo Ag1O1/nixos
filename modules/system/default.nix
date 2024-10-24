@@ -3,5 +3,6 @@
   [
     ./boot
     ./hardware
+    ./nix
   ];
 }
