@@ -7,5 +7,6 @@
       ./spicetify
       ./vm
       ./discord
+      ./nvf
     ];
 }

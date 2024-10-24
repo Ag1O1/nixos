@@ -98,6 +98,7 @@
     foot.enable = true;
     spotify.enable = true;
     discord.enable = true;
+    nvf.enable = true;
     };
     system.hardware.nvidia.enable = true;
     services.pipewire.enable = true;

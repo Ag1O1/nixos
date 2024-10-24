@@ -35,6 +35,8 @@
     tldr
     eza
     uget #download manager
+    scrcpy
+    zdoom #doom
 
     vscode
     thunderbird
