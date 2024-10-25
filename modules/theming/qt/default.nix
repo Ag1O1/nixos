@@ -2,15 +2,26 @@
   qt = {
     enable = true;
     platformTheme = "gtk2";
-    style = "gtk2";
+    style = "kvantum";
   };
-  hm.home = {
+  hm = {
+    qt = {
+      enable = true;
+      platformTheme.name = "qtct";
+      style.name = "kvantum";
+    };
+    home = {
       packages = with pkgs; [
         qt5.qttools
         qt6Packages.qtstyleplugin-kvantum
         libsForQt5.qtstyleplugin-kvantum
         libsForQt5.qt5ct
-      ];
+          (catppuccin-kvantum.override {
+            accent = "Green";
+            variant = "Mocha";
+          })
+        ];
+
     sessionVariables = {
       # Scaling factor for QT applications
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
@@ -23,5 +34,6 @@
         # Tell Calibre to use the dark theme.
       CALIBRE_USE_DARK_PALETTE = "1";
     };
+  };
   };
 }

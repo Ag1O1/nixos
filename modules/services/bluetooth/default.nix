@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 with lib;
 let
   cfg = config.modules.services.bluetooth;
