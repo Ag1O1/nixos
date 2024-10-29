@@ -53,7 +53,7 @@
   programs.appimage.enable = true;
   security.polkit.enable = true;
   programs.kdeconnect.enable = true;
-  programs.seahorse.enable = true; # possibly needed for password management eg. NetworkManager
+  programs.seahorse.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   services.gvfs.enable = true;
