@@ -1,9 +1,15 @@
-{pkgs, inputs, lib, ...}:
-let 
-  gruvboxplus = import ./gruvbox-plus.nix {inherit pkgs;};
-in {
-  imports = [./css.nix];
-  
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
+let
+  gruvboxplus = import ./gruvbox-plus.nix { inherit pkgs; };
+in
+{
+  imports = [ ./css.nix ];
+
   programs.dconf.enable = true;
   hm = {
     gtk = {
@@ -13,11 +19,11 @@ in {
       cursorTheme.name = "Bibata-Modern-Ice";
       theme = {
         package = pkgs.catppuccin-gtk.override {
-            variant = "mocha";
-            size = "standard";
-            accents = ["green"];
-            tweaks = ["normal"];
-          };
+          variant = "mocha";
+          size = "standard";
+          accents = [ "green" ];
+          tweaks = [ "normal" ];
+        };
         name = "catppuccin-mocha-green-standard+normal";
       };
       iconTheme = {
@@ -30,7 +36,7 @@ in {
       gtk2 = {
         extraConfig = ''
           gtk-xft-antialias=1
-        gtk-xft-hinting=1
+          gtk-xft-hinting=1
           gtk-xft-hintstyle="hintslight"
           gtk-xft-rgba="rgb"
         '';
@@ -59,7 +65,6 @@ in {
         gtk-xft-hintstyle = "hintslight";
       };
 
-
       gtk4.extraConfig = {
         # Prefer dark theme.
         gtk-application-prefer-dark-theme = true;
@@ -86,4 +91,3 @@ in {
     };
   };
 }
-

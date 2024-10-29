@@ -26,14 +26,7 @@
     ])
     inputs.spicetify-nix.nixosModules.default
   ];
-  #use lix
-  nix.package = pkgs.lix;
-  programs.seahorse.enable = true; # possibly needed for password management eg. NetworkManager
-  #use chachix
-  nix.settings = {
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-  };
+
 
   environment.systemPackages = [
     inputs.umu.packages.${pkgs.system}.umu
@@ -60,12 +53,8 @@
   programs.appimage.enable = true;
   security.polkit.enable = true;
   programs.kdeconnect.enable = true;
-  programs.nix-ld.enable = false;
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-  nixpkgs.config.allowUnfree = true;
+  programs.seahorse.enable = true; # possibly needed for password management eg. NetworkManager
+
   networking.hostName = "nixos"; # Define your hostname.
   services.gvfs.enable = true;
   services.udisks2.enable = true;
@@ -96,6 +85,8 @@
       "networkmanager"
       "wheel"
       "libvirtd"
+      "scanner"
+      "lp"
     ];
   };
   home-manager = {
@@ -120,7 +111,10 @@
       discord.enable = true;
       nvf.enable = true;
     };
-    system.hardware.nvidia.enable = true;
+    system.hardware = {
+      nvidia.enable = true;
+      printing.enable = true;
+    };
     services = {
       pipewire.enable = true;
       bluetooth.enable = true;
@@ -133,18 +127,23 @@
       layout = "us";
       variant = "";
     };
-    xserver.enable = true;
-    xserver.wacom.enable = true;
-
+    xserver = {
+      enable = true;
+      wacom.enable = true;
+      displayManager.lightdm.enable = false;
+    };
     flatpak.enable = true;
 
-    printing.enable = true;
     libinput.enable = true;
     ollama.enable = true;
     ollama.acceleration = "cuda";
     #open-webui.enable = true;
     #open-webui.openFirewall = true;
     openssh.enable = true;
+  };
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ pkgs.hplipWithPlugin ];
   };
   virtualisation.waydroid.enable = true;
   programs.mtr.enable = true;
@@ -155,3 +154,4 @@
 
   system.stateVersion = "24.05"; # Don't change
 }
+

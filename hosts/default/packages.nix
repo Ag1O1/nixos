@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     tree
     vim
@@ -19,7 +20,7 @@
     cbonsai
     gimp
     kdePackages.wacomtablet
-    nautilus #file manager
+    nautilus # file manager
     pavucontrol
     qbittorrent
     libsForQt5.ark
@@ -34,9 +35,11 @@
     bat
     tldr
     eza
-    uget #download manager
+    uget # download manager
     scrcpy
     nixfmt-rfc-style
+    libreoffice
+    simple-scan
 
     vscode
     thunderbird
