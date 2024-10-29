@@ -1,12 +1,18 @@
-{lib,config,...}:
- with lib; let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+let
   cfg = config.modules.system.hardware.printing;
-in {
+in
+{
   options.modules.system.hardware.printing = {
     enable = lib.mkEnableOption "printing";
   };
   config = lib.mkIf cfg.enable {
-    printing = {
+    services.printing = {
       enable = true;
       drivers = [ pkgs.hplipWithPlugin ];
     };
