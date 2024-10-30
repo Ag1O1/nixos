@@ -10,7 +10,7 @@
       "ngrok http --url=goose-neat-sponge.ngrok-free.app 8080"
       "hyprctl setcursor Bibata-Modern-Ice 24"
       "hyprpaper"
-      "firefox-developer-edition"
+      "$browser"
       "ags -c ~/.config/ags/config.js"
       "${lib.getExe' pkgs.udiskie "udiskie"}"
       "${pkgs.pantheon.pantheon-agent-polkit}/libexec/policykit-1-pantheon/io.elementary.desktop.agent-polkit"

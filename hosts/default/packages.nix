@@ -40,6 +40,7 @@
     nixfmt-rfc-style
     libreoffice
     simple-scan
+    gnome-calendar
 
     vscode
     thunderbird

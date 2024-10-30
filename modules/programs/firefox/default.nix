@@ -71,8 +71,23 @@ in
             };
             # Dark Reader:
             "addon@darkreader.org" = {
-              install_url = "https://addons.mozilla.org/firefox/downloads/file/4359254/darkreader-4.9.94.xpi";
+              install_url = "https://addons.mozilla.org/firefox/downloads/file/4359254/darkreader/latest.xpi";
               installation_mode = "force_installed";
+            };
+            # Unhook youtube
+            "myallychou@gmail.com" = {
+              install_url = "https://addons.mozilla.org/firefox/downloads/file/4263531/youtube_recommended_videos/latest.xpi";
+              installation_mode = "force_installed"; 
+            };
+            # Enhancer for youtube
+            "enhancerforyoutube@maximerf.addons.mozilla.org" = {
+              install_url = "https://addons.mozilla.org/firefox/downloads/file/4263531/enhancer-for-youtube/latest.xpi";
+              installation_mode = "force_installed"; 
+            };
+            # Return youtube dislike
+            "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" = {
+              install_url = "https://addons.mozilla.org/firefox/downloads/file/4263531/return-youtube-dislikes/latest.xpi";
+              installation_mode = "force_installed"; 
             };
           };
 

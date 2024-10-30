@@ -12,6 +12,7 @@
         "$mainMod, C, killactive,"
         "$mainMod, M, exit,"
         "$mainMod, E, exec, $fileManager"
+        "$mainMod, W, exec, $browser"
         "$mainMod, F, togglefloating,"
         "$mainMod SHIFT, F,fullscreen,"
         "$mainMod ALT, F, fullscreenstate, -1 2"

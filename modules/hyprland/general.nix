@@ -13,6 +13,7 @@
       ];
       "$terminal" = "foot";
       "$fileManager" = "nautilus";
+      "$browser" = "firefox-developer-edition";
       "$menu" = "ags -c ~/.config/ags/config.js & ags -t applauncher";
       env = [
         "XCURSOR_SIZE,24"
