@@ -41,6 +41,9 @@
     libreoffice
     simple-scan
     gnome-calendar
+    alpaca # ollama gui
+    equibop
+    element-desktop
 
     vscode
     thunderbird

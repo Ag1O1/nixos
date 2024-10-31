@@ -54,6 +54,7 @@
   security.polkit.enable = true;
   programs.kdeconnect.enable = true;
   programs.seahorse.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   services.gvfs.enable = true;
@@ -108,7 +109,7 @@
       firefox.enable = true;
       foot.enable = true;
       spotify.enable = true;
-      discord.enable = true;
+      #discord.enable = true; #broken
       nvf.enable = true;
     };
     system.hardware = {

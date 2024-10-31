@@ -17,8 +17,8 @@
         libsForQt5.qtstyleplugin-kvantum
         libsForQt5.qt5ct
           (catppuccin-kvantum.override {
-            accent = "Green";
-            variant = "Mocha";
+            accent = "green";
+            variant = "mocha";
           })
         ];
 

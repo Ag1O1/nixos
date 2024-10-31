@@ -6,7 +6,7 @@
 }:{
   hm.wayland.windowManager.hyprland.settings = {
     exec-once = [
-      "[workspace 4 silent] discordcanary"
+      "[workspace 4 silent] equibop"
       "ngrok http --url=goose-neat-sponge.ngrok-free.app 8080"
       "hyprctl setcursor Bibata-Modern-Ice 24"
       "hyprpaper"
@@ -17,7 +17,7 @@
     ];
 
     windowrulev2 = [
-      "workspace 4 silent,class:^(discord)$"
+      "workspace 4 silent,class:^(equibop)$"
       "suppressevent maximize, class:.*" # You'll probably like this. 
       #"immediate, class:^(American Truck Simulator)$"
     ];
