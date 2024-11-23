@@ -8,7 +8,7 @@ const systemtray = await Service.import("systemtray")
 const network = await Service.import("network")
 
 const date = Variable("", {
-    poll: [1000, 'date "+%H:%M:%S %b %e."'],
+    poll: [1000, 'date "+%I:%M %p %b %e.  "'],
 })
 
 // widgets can be only assigned as a child in one container

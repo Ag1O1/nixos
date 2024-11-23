@@ -10,9 +10,11 @@
     unrar
     #lime3ds fails to build
     godot_4
-    (blender.override {
-      cudaSupport = true;
-    })
+    #(blender.override {
+    #  cudaSupport = true;
+    #  waylandSupport = true;
+    #})
+    blender_4_2
     ryujinx
     hyprpaper
     slurp
@@ -44,6 +46,13 @@
     alpaca # ollama gui
     equibop
     element-desktop
+    aseprite
+    kdePackages.kdenlive
+    zapzap
+    uget-integrator
+    gparted
+    lzip
+    python3
 
     vscode
     thunderbird

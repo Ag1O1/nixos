@@ -41,7 +41,7 @@
       };
       cursor = {
         no_hardware_cursors = false; 
-        allow_dumb_copy = true;
+        #allow_dumb_copy = true;
       };
 
       gestures = {

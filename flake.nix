@@ -39,9 +39,10 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    blender-bin.url = "github:edolstra/nix-warez?dir=blender";
   };
 
-  outputs = { self, nixpkgs, nix-colors, ... } @ inputs:{
+  outputs = { self, nixpkgs, nix-colors, blender-bin, ... } @ inputs:{
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs self nix-colors;
@@ -50,6 +51,10 @@
       modules = [
         ./hosts/default/configuration.nix
         inputs.home-manager.nixosModules.default
+
+        ({config, pkgs, ...}: {
+          nixpkgs.overlays = [ blender-bin.overlays.default ];
+        })
       ];
     };
   };

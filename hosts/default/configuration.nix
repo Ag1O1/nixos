@@ -27,7 +27,6 @@
     inputs.spicetify-nix.nixosModules.default
   ];
 
-
   environment.systemPackages = [
     inputs.umu.packages.${pkgs.system}.umu
   ];
@@ -43,9 +42,17 @@
     wantedBy = [ "graphical-session.target" ];
     wants = [ "graphical-session.target" ];
     after = [ "graphical-session.target" ];
+  }; 
+  programs.fish = {
+    enable = true;
+    #shellAliases = {
+    #run = "nix run ";
+    #shell = "nix shell "; #todo: this
+    #};
+    interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+    '';
   };
-  programs.fish.enable = true;
-
   hardware.opentabletdriver = {
     enable = true;
     daemon.enable = true;
@@ -66,17 +73,6 @@
 
   time.timeZone = "Africa/Cairo";
   i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_AG";
-    LC_IDENTIFICATION = "en_AG";
-    LC_MEASUREMENT = "en_AG";
-    LC_MONETARY = "en_AG";
-    LC_NAME = "en_AG";
-    LC_NUMERIC = "en_AG";
-    LC_PAPER = "en_AG";
-    LC_TELEPHONE = "en_AG";
-    LC_TIME = "en_AG";
-  };
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.amr = {
     isNormalUser = true;
@@ -124,13 +120,18 @@
 
   programs.direnv.enable = true;
   services = {
+    #desktopManager.plasma6.enable = true;
     xserver.xkb = {
       layout = "us";
       variant = "";
     };
     xserver = {
+      
+      desktopManager.gnome.enable = true;
+      #desktopManager.lxqt.enable = true;
       enable = true;
       wacom.enable = true;
+      displayManager.sddm.enable = true;
       displayManager.lightdm.enable = false;
     };
     flatpak.enable = true;
@@ -138,8 +139,8 @@
     libinput.enable = true;
     ollama.enable = true;
     ollama.acceleration = "cuda";
-    #open-webui.enable = true;
-    #open-webui.openFirewall = true;
+    open-webui.enable = true;
+    open-webui.openFirewall = true;
     openssh.enable = true;
   };
   hardware.sane = {

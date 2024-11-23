@@ -54,7 +54,7 @@ in {
 
     hardware = {
       nvidia = {
-        package = mkDefault config.boot.kernelPackages.nvidiaPackages.latest;
+        package = mkDefault config.boot.kernelPackages.nvidiaPackages.beta;
         modesetting.enable = mkDefault true;
 
         powerManagement = {
