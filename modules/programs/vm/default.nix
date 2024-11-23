@@ -24,6 +24,7 @@ in {
       spice-gtk
       spice-protocol
       virt-viewer
+      virglrenderer
       #virtio-win
       #win-spice
     ];

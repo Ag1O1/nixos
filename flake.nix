@@ -32,7 +32,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ags = {
-      url = "github:Aylur/ags";
+      url = "github:Aylur/ags/v1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix = {
@@ -40,9 +40,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     blender-bin.url = "github:edolstra/nix-warez?dir=blender";
+    ollama = {
+      url = "github:abysssol/ollama-flake/5";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nix-colors, blender-bin, ... } @ inputs:{
+  outputs = { self, nixpkgs, nix-colors, blender-bin, ollama, ... } @ inputs:
+  let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+    ollama-cuda = ollama.packages.${system}.cuda;
+  in
+  {
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs self nix-colors;

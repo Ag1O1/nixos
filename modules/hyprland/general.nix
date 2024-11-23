@@ -8,8 +8,8 @@
   hm.wayland.windowManager.hyprland = {
     settings = {
       monitor = [
-        "HDMI-A-1, 1920x1080@60, 0x0, 1"
-        "DVI-D-1, 1600x900@60, 1920x90, 1"
+        "HDMI-A-1, preferred, auto-left, 1"
+        "DVI-D-1, preferred, auto-right, 1"
       ];
       "$terminal" = "foot";
       "$fileManager" = "nautilus";
@@ -22,7 +22,10 @@
       ];
       misc = {
         force_default_wallpaper = 0;
-        disable_hyprland_logo = false; # If true disables the random hyprland logo / anime girl background. :(
+        disable_hyprland_logo = true; # If true disables the random hyprland logo / anime girl background. :(
+      };
+      render = {
+        explicit_sync = 0;
       };
       input = {
         kb_layout = "us,eg";
@@ -40,8 +43,8 @@
         };
       };
       cursor = {
-        no_hardware_cursors = false; 
-        #allow_dumb_copy = true;
+        no_hardware_cursors = false;
+        use_cpu_buffer = true; 
       };
 
       gestures = {

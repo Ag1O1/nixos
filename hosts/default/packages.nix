@@ -8,6 +8,7 @@
     gh
     ngrok
     unrar
+    #mission-center fails to build
     #lime3ds fails to build
     godot_4
     #(blender.override {
@@ -43,7 +44,6 @@
     libreoffice
     simple-scan
     gnome-calendar
-    alpaca # ollama gui
     equibop
     element-desktop
     aseprite
@@ -53,6 +53,7 @@
     gparted
     lzip
     python3
+    krita
 
     vscode
     thunderbird
@@ -75,4 +76,5 @@
     nerdfonts
     cascadia-code
   ];
+
 }

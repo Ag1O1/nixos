@@ -29,6 +29,13 @@
 
   environment.systemPackages = [
     inputs.umu.packages.${pkgs.system}.umu
+      (pkgs.writers.writeFishBin "nrun" ''
+    if echo "$argv[1]" | grep -Eq '^[a-z]+:.+/.+$'
+        nix run $argv[1] -- $argv[2..]
+    else
+        nix run nixpkgs#$argv[1] -- $argv[2..]
+    end
+  '')
   ];
   systemd.user.services.polkit-pantheon-authentication-agent-1 = {
     description = "Pantheon PolicyKit agent";
@@ -53,6 +60,7 @@
       set fish_greeting # Disable greeting
     '';
   };
+
   hardware.opentabletdriver = {
     enable = true;
     daemon.enable = true;
@@ -84,6 +92,9 @@
       "libvirtd"
       "scanner"
       "lp"
+      "vidio"
+      "kvm"
+      "libvirt"
     ];
   };
   home-manager = {
@@ -138,7 +149,8 @@
 
     libinput.enable = true;
     ollama.enable = true;
-    ollama.acceleration = "cuda";
+    #ollama.acceleration = "cuda";
+    ollama.package = inputs.ollama.packages.x86_64-linux.cuda;
     open-webui.enable = true;
     open-webui.openFirewall = true;
     openssh.enable = true;

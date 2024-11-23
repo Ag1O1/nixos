@@ -1,7 +1,8 @@
 {pkgs, ...}: {
+  
   qt = {
     enable = true;
-    platformTheme = "gtk2";
+    platformTheme = "qt5ct";
     style = "kvantum";
   };
   hm = {
@@ -16,10 +17,15 @@
         qt6Packages.qtstyleplugin-kvantum
         libsForQt5.qtstyleplugin-kvantum
         libsForQt5.qt5ct
+          (catppuccin-kde.override {
+            accents = ["green"];
+            flavour = ["mocha"];
+          })
           (catppuccin-kvantum.override {
             accent = "green";
             variant = "mocha";
           })
+        catppuccin-qt5ct
         ];
 
     sessionVariables = {
