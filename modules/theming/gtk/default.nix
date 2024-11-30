@@ -15,8 +15,11 @@ in
     gtk = {
       enable = true;
 
-      cursorTheme.package = pkgs.bibata-cursors;
-      cursorTheme.name = "Bibata-Modern-Ice";
+      cursorTheme = {
+        name = "phinger-cursors-light";
+        package = pkgs.phinger-cursors;
+        size = 32;
+      };
       theme = {
         package = pkgs.catppuccin-gtk.override {
           variant = "mocha";
@@ -83,9 +86,18 @@ in
         gtk-xft-hintstyle = "hintslight";
       };
     };
+    /*
     home.pointerCursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
+      gtk.enable = true;
+      x11.enable = true;
+    };
+    */
+    home.pointerCursor = {
+      name = "phinger-cursors-light";
+      package = pkgs.phinger-cursors;
+      size = 32;
       gtk.enable = true;
       x11.enable = true;
     };

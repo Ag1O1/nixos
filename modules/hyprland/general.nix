@@ -18,7 +18,7 @@
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
-        "HYPRCURSOR_THEME,Bibata-Modern-Ice"
+        "HYPRCURSOR_THEME,phinger-cursors-light"
       ];
       misc = {
         force_default_wallpaper = 0;

@@ -1,5 +1,8 @@
 { pkgs, inputs, ... }:
 {
+  nixpkgs.config.permittedInsecurePackages = [
+    "dotnet-runtime-6.0.36"
+  ];
   nix = {
     package = pkgs.lix;
     optimise.automatic = true;

@@ -15,7 +15,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland.url = "github:hyprwm/Hyprland";
 
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -27,10 +27,10 @@
     };
     niqspkgs.url = "git+https://github.com/diniamo/niqspkgs";
 
-    umu= {
-      url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #umu= {
+    #  url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
     ags = {
       url = "github:Aylur/ags/v1";
       inputs.nixpkgs.follows = "nixpkgs";

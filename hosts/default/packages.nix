@@ -73,7 +73,7 @@
 
   ];
   fonts.packages = with pkgs; [
-    nerdfonts
+    nerd-fonts.roboto-mono
     cascadia-code
   ];
 

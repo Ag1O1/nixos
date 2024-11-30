@@ -8,7 +8,7 @@
     exec-once = [
       "[workspace 4 silent] equibop"
       "ngrok http --url=goose-neat-sponge.ngrok-free.app 8080"
-      "hyprctl setcursor Bibata-Modern-Ice 24"
+      "hyprctl setcursor phinger-cursors-light 32"
       "hyprpaper"
       "$browser"
       "ags -c ~/.config/ags/config.js"
