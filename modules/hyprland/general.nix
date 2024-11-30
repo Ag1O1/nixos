@@ -16,8 +16,8 @@
       "$browser" = "firefox-developer-edition";
       "$menu" = "ags -c ~/.config/ags/config.js & ags -t applauncher";
       env = [
-        "XCURSOR_SIZE,24"
-        "HYPRCURSOR_SIZE,24"
+        "XCURSOR_SIZE,32"
+        "HYPRCURSOR_SIZE,32"
         "HYPRCURSOR_THEME,phinger-cursors-light"
       ];
       misc = {
@@ -25,7 +25,7 @@
         disable_hyprland_logo = true; # If true disables the random hyprland logo / anime girl background. :(
       };
       render = {
-        explicit_sync = 0;
+        explicit_sync = 1;
       };
       input = {
         kb_layout = "us,eg";

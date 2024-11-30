@@ -61,10 +61,10 @@
     '';
   };
 
-  hardware.opentabletdriver = {
-    enable = true;
-    daemon.enable = true;
-  };
+  #hardware.opentabletdriver = {
+  #  enable = true;
+  #  daemon.enable = true;
+  #};
   programs.appimage.enable = true;
   security.polkit.enable = true;
   programs.kdeconnect.enable = true;
