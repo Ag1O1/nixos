@@ -111,6 +111,7 @@
   };
   modules = {
     programs = {
+      fuzzel.enable = true;
       vm.enable = true;
       gaming.enable = true;
       firefox.enable = true;
@@ -151,6 +152,10 @@
     ollama.enable = true;
     #ollama.acceleration = "cuda";
     ollama.package = inputs.ollama.packages.x86_64-linux.cuda;
+    ollama.environmentVariables = {
+      OLLAMA_FLASH_ATTENTION="1";
+      OLLAMA_KV_CACHE_TYPE="q4_0";
+    };
     open-webui.enable = true;
     open-webui.openFirewall = true;
     openssh.enable = true;
@@ -166,6 +171,8 @@
     enableSSHSupport = true;
   };
 
+  networking.firewall.allowedTCPPorts = [7777];
+  
   system.stateVersion = "24.05"; # Don't change
 }
 

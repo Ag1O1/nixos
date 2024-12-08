@@ -8,5 +8,6 @@
       ./vm
       ./discord
       ./nvf
+      ./fuzzel
     ];
 }

@@ -12,6 +12,7 @@
       "hyprpaper"
       "$browser"
       "ags -c ~/.config/ags/config.js"
+      "python -m venv ~/discord-ollama-main/bot-env; source ~/discord-ollama-main/bot-env/bin/activate; python ~/discord-ollama-main/main.py"
       "${lib.getExe' pkgs.udiskie "udiskie"}"
       "${pkgs.pantheon.pantheon-agent-polkit}/libexec/policykit-1-pantheon/io.elementary.desktop.agent-polkit"
     ];
