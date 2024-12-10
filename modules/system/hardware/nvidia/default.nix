@@ -20,10 +20,6 @@ in {
       }
     ];
 
-    # blacklist nouveau module so that it does not conflict with nvidia drm stuff
-    # also the nouveau performance is godawful, I'd rather run linux on a piece of paper than use nouveau
-    # no offense to nouveau devs, I'm sure they're doing their best and they have my respect for that
-    # but their best does not constitute a usable driver for me
     boot.blacklistedKernelModules = ["nouveau"];
 
     environment = {
