@@ -15,6 +15,8 @@
       "python -m venv ~/discord-ollama-main/bot-env; source ~/discord-ollama-main/bot-env/bin/activate; python ~/discord-ollama-main/main.py"
       "${lib.getExe' pkgs.udiskie "udiskie"}"
       "${pkgs.pantheon.pantheon-agent-polkit}/libexec/policykit-1-pantheon/io.elementary.desktop.agent-polkit"
+      #"wl-paste -p -t text --watch ${lib.getExe' pkgs.clipman "clipman"} store -P --histpath="~/.local/share/clipman-primary.json""
+      "wl-paste -t text --watch clipman store --no-persist"
     ];
 
     windowrulev2 = [

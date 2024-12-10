@@ -17,6 +17,7 @@
         "$mainMod SHIFT, F,fullscreen,"
         "$mainMod ALT, F, fullscreenstate, -1 2"
         "$mainMod, R, exec, $menu"
+        "$mainMod, V, exec, ${lib.getExe' pkgs.clipman "clipman"} pick -t STDOUT | fuzzel --dmenu | wl-copy"
         "$mainMod, P, pseudo, "
         "$mainMod, J, togglesplit, "
 

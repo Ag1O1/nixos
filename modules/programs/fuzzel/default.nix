@@ -7,12 +7,14 @@ in {
     enable = lib.mkEnableOption "fuzzel";
   };
   config = mkIf cfg.enable {
-    hm.fuzzel = {
+    hm.programs.fuzzel = {
       enable = true;
       settings = {
         main = {
           terminal = "${pkgs.foot}/bin/foot";
           layer = "overlay";
+          icon-theme="Papirus-Dark";
+          inner-pad = 4;
         };
         colors = {
           background="1e1e2edd";
@@ -22,12 +24,12 @@ in {
           input="cdd6f4ff";
           match="a6e3a1ff";
           selection="585b70ff";
-          selection-text=cdd6f4ff;
+          selection-text="cdd6f4ff";
           selection-match="a6e3a1ff";
           counter="7f849cff";
           border="a6e3a1ff";
         };
-        icon-theme = "Papirus-Dark"
+        
       };
     };
   };
