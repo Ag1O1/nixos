@@ -26,7 +26,6 @@
     ])
     inputs.spicetify-nix.nixosModules.default
   ];
-
   environment.systemPackages = [
  #   inputs.umu.packages.${pkgs.system}.umu
       (pkgs.writers.writeFishBin "nrun" ''

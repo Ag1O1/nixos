@@ -17,9 +17,9 @@
       #"$menu" = "ags -c ~/.config/ags/config.js & ags -t applauncher";
       "$menu" = "fuzzel";
       env = [
-        "XCURSOR_SIZE,32"
-        "HYPRCURSOR_SIZE,32"
-        "HYPRCURSOR_THEME,phinger-cursors-light"
+        "XCURSOR_SIZE,24"
+        "HYPRCURSOR_SIZE,24"
+        "HYPRCURSOR_THEME,Bibata-Modern-Ice"
       ];
       misc = {
         force_default_wallpaper = 0;

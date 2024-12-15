@@ -25,6 +25,11 @@ in {
       spice-protocol
       virt-viewer
       virglrenderer
+      qemu
+      quickemu
+      guestfs-tools
+      libvirt-glib
+      virtiofsd
       #virtio-win
       #win-spice
     ];

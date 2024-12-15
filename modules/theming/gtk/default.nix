@@ -4,9 +4,9 @@
   lib,
   ...
 }:
-let
+/*let
   gruvboxplus = import ./gruvbox-plus.nix { inherit pkgs; };
-in
+in*/
 {
   imports = [ ./css.nix ];
 
@@ -14,11 +14,11 @@ in
   hm = {
     gtk = {
       enable = true;
-
+      
       cursorTheme = {
-        name = "phinger-cursors-light";
-        package = pkgs.phinger-cursors;
-        size = 32;
+        name = "Bibata-Modern-Ice";
+        package = pkgs.bibata-cursors;
+        size = 24;
       };
       theme = {
         package = pkgs.catppuccin-gtk.override {
@@ -86,20 +86,13 @@ in
         gtk-xft-hintstyle = "hintslight";
       };
     };
-    /*
+    
     home.pointerCursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
       gtk.enable = true;
       x11.enable = true;
-    };
-    */
-    home.pointerCursor = {
-      name = "phinger-cursors-light";
-      package = pkgs.phinger-cursors;
-      size = 32;
-      gtk.enable = true;
-      x11.enable = true;
+      size = 24;
     };
   };
 }

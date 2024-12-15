@@ -44,13 +44,12 @@
       url = "github:abysssol/ollama-flake/5";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
-  outputs = { self, nixpkgs, nix-colors, blender-bin, ollama, ... } @ inputs:
+  outputs = { self, nixpkgs, nix-colors, blender-bin, ollama, nixos-cosmic, ... } @ inputs:
   let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-    ollama-cuda = ollama.packages.${system}.cuda;
   in
   {
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {

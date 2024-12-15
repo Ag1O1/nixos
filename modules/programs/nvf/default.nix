@@ -24,6 +24,9 @@ in {
           languages = {
             nix.enable = true;
             nix.lsp.enable = true;
+            #nix.lsp.server = "rnix";
+            nix.format.enable = true;
+            nix.format.type = "nixfmt";
             ts.enable = true;
             ts.lsp.enable = true;
             markdown.enable = true;
