@@ -21,8 +21,8 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    hyprsplit = {
-      url = "github:shezdy/hyprsplit";
+    split-monitor-workspaces = {
+      url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
     niqspkgs.url = "git+https://github.com/diniamo/niqspkgs";
@@ -50,6 +50,7 @@
   outputs = { self, nixpkgs, nix-colors, blender-bin, ollama, nixos-cosmic, ... } @ inputs:
   let
     system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
   in
   {
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
@@ -66,5 +67,6 @@
         })
       ];
     };
+    devshell.${system}.default = (import ./shell.nix {inherit nixpkgs; });
   };
 }

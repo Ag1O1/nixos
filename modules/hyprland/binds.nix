@@ -9,15 +9,15 @@
     bind =
       [
         "$mainMod, Q, exec, $terminal"
-        "$mainMod, C, killactive,"
-        "$mainMod, M, exit,"
+        "$mainMod SHIFT, C, killactive,"
+        "$mainMod SHIFT, M, exit,"
         "$mainMod, E, exec, $fileManager"
         "$mainMod, W, exec, $browser"
         "$mainMod, F, togglefloating,"
         "$mainMod SHIFT, F,fullscreen,"
         "$mainMod ALT, F, fullscreenstate, -1 2"
         "$mainMod, R, exec, $menu"
-        "$mainMod, V, exec, ${lib.getExe' pkgs.clipman "clipman"} pick -t STDOUT | fuzzel --dmenu | wl-copy"
+        "$mainMod, V, exec, ${lib.getExe' pkgs.clipman "clipman"} pick -t STDOUT | fuzzel --dmenu | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}"
         "$mainMod, P, pseudo, "
         "$mainMod, J, togglesplit, "
 
@@ -34,7 +34,27 @@
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
 
-      ]
+      ]++ (
+      # workspaces
+      # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+      builtins.concatLists (builtins.genList (i:
+          let ws = i + 1;
+          in [
+            "ALT, code:1${toString i}, split-workspace, ${toString ws}"
+            "ALT SHIFT, code:1${toString i}, split-movetoworkspace, ${toString ws}"
+          ]
+        )
+        9)
+    );
+    plugin = {
+      split-monitor-workspaces = {
+        count = 10;
+        keep_focused = 0;
+        enable_notifications = 0;
+        enable_persistent_workspaces = 0;
+      };
+    };
+  /*
     ++ (
       # workspaces
       # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
@@ -47,6 +67,7 @@
         )
         9)
     );
+  */
     bindm =
     [
     "$mainMod, mouse:272, movewindow"

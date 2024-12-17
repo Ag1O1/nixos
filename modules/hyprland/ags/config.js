@@ -8,7 +8,8 @@ const systemtray = await Service.import("systemtray")
 const network = await Service.import("network")
 
 const date = Variable("", {
-    poll: [1000, 'date "+%I:%M %p %b %e.  "'],
+    // poll: [1000, 'date "+%I:%M %p %b %e.  "'],
+    poll: [1000, 'date "+%a %d %b, %I:%M %p "'],
 })
 
 // widgets can be only assigned as a child in one container
@@ -217,10 +218,11 @@ function Network() {
 // layout of the bar
 function Left() {
     return Widget.Box({
-        spacing: 8,
+        spacing: 10,
         children: [
             Workspaces(),
-            Media(),
+            //Media(),
+            ClientTitle(),
         ],
     })
 }
@@ -229,8 +231,8 @@ function Center() {
     return Widget.Box({
         spacing: 8,
         children: [
-            
-            ClientTitle(),
+            Clock(),
+            //ClientTitle(),
             //Notification(),
         ],
     })
@@ -239,13 +241,13 @@ function Center() {
 function Right() {
     return Widget.Box({
         hpack: "end",
-        spacing: 8,
+        spacing: 15,
         children: [
             /*Test(),*/
             SysTray(),
             Volume(),
             BatteryLabel(),
-            Clock(),
+            
             
         ],
     })
@@ -273,7 +275,7 @@ App.config({
     windows: [
         NotificationPopups(),
         applauncher,
-        Bar()
+        Bar(0)
     ],
 })
 

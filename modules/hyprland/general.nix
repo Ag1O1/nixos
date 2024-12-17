@@ -5,10 +5,11 @@
   inputs,
   ...
 }:{
+
   hm.wayland.windowManager.hyprland = {
     settings = {
       monitor = [
-        "HDMI-A-1, preferred, auto-left, 1"
+        "HDMI-A-1, preferred, 0x0, 1"
         "DVI-D-1, preferred, auto-right, 1"
       ];
       "$terminal" = "foot";

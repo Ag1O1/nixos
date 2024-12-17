@@ -1,4 +1,4 @@
-{pkgs, inputs, ... }: let
+{pkgs, inputs, ...}: let
   pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
   imports =
@@ -8,14 +8,15 @@ in {
       ./exec.nix
       ./general.nix
       ./ags
+      #inputs.split-monitor-workspaces.default
     ];
   hm = {
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    #plugins = [
-    #pkgs.hyprlandPlugins.hyprsplit
-    #];
+    plugins = [
+     inputs.split-monitor-workspaces.packages.x86_64-linux.split-monitor-workspaces
+    ];
   };
   home.sessionVariables.NIXOS_OZONE_WL = "1";
   };
