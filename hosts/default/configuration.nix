@@ -138,7 +138,7 @@
     };
     xserver = {
       
-      desktopManager.gnome.enable = true;
+      #desktopManager.gnome.enable = true;
       #desktopManager.lxqt.enable = true;
       enable = true;
       wacom.enable = true;
@@ -170,7 +170,8 @@
     enableSSHSupport = true;
   };
 
-  networking.firewall.allowedTCPPorts = [7777];
+  networking.firewall.allowedTCPPorts = [7777 25565 49185];
+  networking.firewall.allowedUDPPorts = [19132];
   
   system.stateVersion = "24.05"; # Don't change
 }

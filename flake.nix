@@ -67,6 +67,5 @@
         })
       ];
     };
-    devshell.${system}.default = (import ./shell.nix {inherit nixpkgs; });
   };
 }
