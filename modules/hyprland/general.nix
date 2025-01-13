@@ -40,7 +40,7 @@
 
         follow_mouse = 1;
         accel_profile = "flat";
-        sensitivity = 0;
+        sensitivity = -0.3;
 
         touchpad = {
           natural_scroll = false;

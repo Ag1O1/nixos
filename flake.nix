@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nix-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,29 +41,29 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     blender-bin.url = "github:edolstra/nix-warez?dir=blender";
-    ollama = {
-      url = "github:abysssol/ollama-flake/5";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    #ollama = {
+    #  url = "github:abysssol/ollama-flake/5";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
+    #nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
-  outputs = { self, nixpkgs, nix-colors, blender-bin, ollama, nixos-cosmic, ... } @ inputs:
+  outputs = { self, nixpkgs, nix-stable, nix-colors, blender-bin, ... } @ inputs:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+    stable-pkgs = nix-stable.legacyPackages.${system};
   in
   {
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = {
-        inherit inputs self nix-colors;
+        inherit inputs self nix-colors stable-pkgs nix-stable;
         };
-
       modules = [
         ./hosts/default/configuration.nix
         inputs.home-manager.nixosModules.default
 
-        ({config, pkgs, ...}: {
+        ({...}: {
           nixpkgs.overlays = [ blender-bin.overlays.default ];
         })
       ];

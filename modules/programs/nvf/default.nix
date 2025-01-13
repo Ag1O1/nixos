@@ -18,18 +18,28 @@ in {
         vim = {
           viAlias = false;
           vimAlias = true;
-          lsp = {
+          lsp.enable = true;
+          statusline.lualine.enable = true;
+          telescope.enable = true;
+          autocomplete.nvim-cmp.enable = true;
+          theme = {
             enable = true;
+            name = "gruvbox";
+            style = "dark";
           };
+
           languages = {
+            enableLSP = true;
+            enableTreesitter = true;
+
             nix.enable = true;
-            nix.lsp.enable = true;
-            #nix.lsp.server = "rnix";
             nix.format.enable = true;
             nix.format.type = "nixfmt";
             ts.enable = true;
-            ts.lsp.enable = true;
+            rust.enable = true;
+            python.enable = true;
             markdown.enable = true;
+            
           };
         };
       };

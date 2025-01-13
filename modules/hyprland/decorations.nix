@@ -6,10 +6,10 @@
   hm.wayland.windowManager.hyprland.settings = {
     general = {
       
-      gaps_in = 3;
-      gaps_out = 6;
+      gaps_in = 0; #3
+      gaps_out = 0; #6
 
-      border_size = 2;
+      border_size = 1; # 2 
 
       # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
       "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
@@ -25,7 +25,7 @@
     };
 
     decoration = {
-      rounding = 5;
+      rounding = 0; #5
 
       # Change transparency of focused and unfocused windows
       active_opacity = 1;
@@ -38,7 +38,7 @@
 
       # https://wiki.hyprland.org/Configuring/Variables/#blur
       blur = {
-          enabled = true;
+          enabled = false;
           size = 4;
           passes = 1;
 
@@ -47,7 +47,7 @@
     };
 
     animations = {
-      enabled = true;
+      enabled = false; #true
 
       # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
 

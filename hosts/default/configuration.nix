@@ -111,12 +111,12 @@
   modules = {
     programs = {
       fuzzel.enable = true;
-      vm.enable = true;
+      #vm.enable = true; QEMU BROKEN
       gaming.enable = true;
       firefox.enable = true;
       foot.enable = true;
       spotify.enable = true;
-      #discord.enable = true; #broken
+      discord.enable = true;
       nvf.enable = true;
     };
     system.hardware = {
@@ -142,21 +142,21 @@
       #desktopManager.lxqt.enable = true;
       enable = true;
       wacom.enable = true;
-      displayManager.sddm.enable = true;
+      displayManager.sddm.enable = false;
       displayManager.lightdm.enable = false;
     };
     flatpak.enable = true;
 
     libinput.enable = true;
     ollama.enable = true;
-    #ollama.acceleration = "cuda";
-    ollama.package = inputs.ollama.packages.x86_64-linux.cuda;
+    ollama.acceleration = "cuda";
+    #ollama.package = inputs.ollama.packages.x86_64-linux.cuda;
     ollama.environmentVariables = {
       OLLAMA_FLASH_ATTENTION="1";
       OLLAMA_KV_CACHE_TYPE="q4_0";
     };
     open-webui.enable = true;
-    open-webui.openFirewall = true;
+    #open-webui.openFirewall = true;
     openssh.enable = true;
   };
   hardware.sane = {

@@ -34,7 +34,7 @@
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
 
-      ]++ (
+      ]/*++ (
       # workspaces
       # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
       builtins.concatLists (builtins.genList (i:
@@ -45,17 +45,7 @@
           ]
         )
         9)
-    );
-    plugin = {
-      split-monitor-workspaces = {
-        count = 10;
-        keep_focused = 0;
-        enable_notifications = 0;
-        enable_persistent_workspaces = 0;
-      };
-    };
-  /*
-    ++ (
+    )*/++ (
       # workspaces
       # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
       builtins.concatLists (builtins.genList (i:
@@ -67,7 +57,16 @@
         )
         9)
     );
-  */
+    /*
+    plugin = {
+      split-monitor-workspaces = {
+        count = 10;
+        keep_focused = 0;
+        enable_notifications = 0;
+        enable_persistent_workspaces = 0;
+      };
+    };
+    */
     bindm =
     [
     "$mainMod, mouse:272, movewindow"
