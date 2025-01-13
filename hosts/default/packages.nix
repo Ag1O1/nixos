@@ -62,7 +62,7 @@
     pkgs.rustc
     pkgs.cargo
     pkgs.gcc
-    pkgs.qualculate-gtk
+    pkgs.qalculate-gtk
     pkgs.libqalculate
 
     pkgs.vscode
