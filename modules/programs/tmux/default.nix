@@ -6,7 +6,7 @@
 with lib; let
   cfg = config.modules.programs.tmux;
 in {
-  options.modules.programs.spotify = {
+  options.modules.programs.tmux = {
     enable = lib.mkEnableOption "tmux";
   };
   config = mkIf cfg.enable {
