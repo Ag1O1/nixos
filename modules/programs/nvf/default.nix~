@@ -21,14 +21,6 @@ in {
       # most settings are documented in the appendix
       settings = {
         vim = {
-          keymaps = [
-            {
-              key = "<SPACE>a";
-              mode = "n";
-              silent = true;
-              action = ":Neotree<CR>";
-            }
-          ];
           viAlias = false;
           vimAlias = true;
           lsp.enable = true;
@@ -38,18 +30,14 @@ in {
           autocomplete.nvim-cmp.enable = true;
           theme = {
             enable = true;
-            name = "catppuccin";
-            #base16-colors = colors;
-            style = "mocha";
+            name = "tokyonight";
+            style = "moon";
           };
           options = {
             expandtab = true;
             shiftwidth = 2;
             tabstop = 2;
             softtabstop = 2;
-          };
-          filetree.neo-tree = {
-            enable = true;
           };
           languages = {
             enableLSP = true;

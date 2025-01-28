@@ -9,16 +9,16 @@
   nix-colors,
   stable-pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./hardware
     ./packages.nix
     (self + /modules)
-    (
-      lib.mkAliasOptionModule
-      ["hm"]
+    (lib.mkAliasOptionModule
+      [ "hm" ]
       [
         "home-manager"
         "users"
@@ -46,9 +46,9 @@
       RestartSec = 1;
       TimeoutStopSec = 10;
     };
-    wantedBy = ["graphical-session.target"];
-    wants = ["graphical-session.target"];
-    after = ["graphical-session.target"];
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
   };
   programs.fish = {
     enable = true;
@@ -68,7 +68,7 @@
   programs.appimage.enable = true;
   security.polkit.enable = true;
   programs.kdeconnect.enable = true;
-  #programs.seahorse.enable = true; REACTIVATE AFTER YOUR DONE GNOME
+  programs.seahorse.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -113,7 +113,6 @@
     programs = {
       fuzzel.enable = true;
       #vm.enable = true; QEMU BROKEN
-      tmux.enable = true;
       gaming.enable = true;
       firefox.enable = true;
       foot.enable = true;
@@ -133,16 +132,16 @@
 
   programs.direnv.enable = true;
   programs.sway.enable = true;
-  environment.pathsToLink = ["/libexec"]; #idk if i need this
+
   services = {
+    #desktopManager.plasma6.enable = true;
     xserver.xkb = {
       layout = "us";
       variant = "";
     };
     xserver = {
-      desktopManager.gnome.enable = true;
-      #desktopManager.xterm.enable = true;
-      windowManager.i3.enable = true;
+      #desktopManager.gnome.enable = true;
+      #desktopManager.lxqt.enable = true;
       enable = true;
       wacom.enable = true;
       displayManager.sddm.enable = false;
@@ -151,22 +150,22 @@
     flatpak.enable = true;
 
     libinput.enable = true;
-
-    ollama.enable = true;
-    ollama.acceleration = "cuda";
-    ollama.package = pkgs.ollama;
-    ollama.environmentVariables = {
-      OLLAMA_FLASH_ATTENTION = "1";
-      OLLAMA_KV_CACHE_TYPE = "q4_0";
-    };
-
+    /*
+      ollama.enable = true;
+      ollama.acceleration = "cuda";
+      ollama.package = pkgs.ollama;
+      ollama.environmentVariables = {
+        OLLAMA_FLASH_ATTENTION = "1";
+        OLLAMA_KV_CACHE_TYPE = "q4_0";
+      };
+    */
     open-webui.enable = true;
     #open-webui.openFirewall = true;
     openssh.enable = true;
   };
   hardware.sane = {
     enable = true;
-    extraBackends = [pkgs.hplipWithPlugin];
+    extraBackends = [ pkgs.hplipWithPlugin ];
   };
   virtualisation.waydroid.enable = true;
   programs.mtr.enable = true;

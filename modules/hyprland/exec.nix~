@@ -2,7 +2,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   hm.wayland.windowManager.hyprland.settings = {
     exec-once = [
       "ags -c ~/.config/ags/config.js"
@@ -11,7 +12,7 @@
       "hyprctl setcursor Bibata-Modern-Ice 24"
       "hyprpaper"
       "$browser"
-      "cd /home/amr/projects/rust/discord-ollama/flake && nix develop"
+      "sleep 10; python -m venv ~/discord-ollama-main/bot-env; source ~/discord-ollama-main/bot-env/bin/activate; python ~/discord-ollama-main/main.py"
       "[workspace 3] zapzap"
       "${lib.getExe' pkgs.udiskie "udiskie"}"
       "${pkgs.pantheon.pantheon-agent-polkit}/libexec/policykit-1-pantheon/io.elementary.desktop.agent-polkit"

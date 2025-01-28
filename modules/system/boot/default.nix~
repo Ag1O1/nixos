@@ -1,8 +1,11 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   session = "${pkgs.hyprland}/bin/Hyprland";
   username = "amr";
-in {
+in
+
+{
   services.greetd = {
     enable = true;
     settings = {
@@ -18,14 +21,15 @@ in {
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    #kernelPackages = pkgs.linuxPackages_xanmod_latest;
     #kernelPackages = pkgs.pkgs.linuxPackages_testing;
-    #kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
     #kernelPackages = pkgs.linuxPackages_zen;
-    kernelParams = ["nvidia_drm.fbdev=1"];
+    kernelParams = [ "nvidia_drm.fbdev=1" ];
     loader = {
       efi = {
         canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
       };
       grub = {
         enable = true;
@@ -38,7 +42,7 @@ in {
     plymouth = {
       enable = true;
       # font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
-      themePackages = [pkgs.adi1090x-plymouth-themes];
+      themePackages = [ pkgs.adi1090x-plymouth-themes ];
       theme = "liquid";
     };
   };

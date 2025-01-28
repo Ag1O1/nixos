@@ -18,6 +18,8 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
@@ -48,23 +50,30 @@
     #nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
-  outputs = { self, nixpkgs, nix-stable, nix-colors, blender-bin, ... } @ inputs:
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    nix-stable,
+    nix-colors,
+    blender-bin,
+    nix-flatpak,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
     stable-pkgs = nix-stable.legacyPackages.${system};
-  in
-  {
+  in {
     nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs self nix-colors stable-pkgs nix-stable;
-        };
+      };
       modules = [
         ./hosts/default/configuration.nix
         inputs.home-manager.nixosModules.default
+        nix-flatpak.nixosModules.nix-flatpak
 
         ({...}: {
-          nixpkgs.overlays = [ blender-bin.overlays.default ];
+          nixpkgs.overlays = [blender-bin.overlays.default];
         })
       ];
     };

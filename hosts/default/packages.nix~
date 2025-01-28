@@ -1,12 +1,7 @@
+{ pkgs, stable-pkgs, ... }:
 {
-  pkgs,
-  stable-pkgs,
-  ...
-}: {
-  # Packages.
+  # Packages
   environment.systemPackages = [
-    pkgs.xorg.xorgserver
-    pkgs.xorg.xinit
     pkgs.pkg-config
     pkgs.tree
     pkgs.vim
@@ -37,10 +32,11 @@
     pkgs.telegram-desktop
     pkgs.bc
     pkgs.minesweep-rs
+    pkgs.bottles
     pkgs.fzf
     pkgs.atuin
     pkgs.dust
-    (pkgs.btop.override {cudaSupport = true;})
+    (pkgs.btop.override { cudaSupport = true; })
     pkgs.bat
     pkgs.tldr
     pkgs.eza
@@ -93,21 +89,4 @@
     #nerd-fonts
     cascadia-code
   ];
-  ### flatpaks
-  services.flatpak = {
-    update.onActivation = true;
-    remotes = [
-      {
-        name = "flathub-beta";
-        location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
-      }
-    ];
-    packages = [
-      "com.usebottles.bottles"
-      {
-        flatpakref = " https://sober.vinegarhq.org/sober.flatpakref";
-        sha256 = "1pj8y1xhiwgbnhrr3yr3ybpfis9slrl73i0b1lc9q89vhip6ym2l";
-      }
-    ];
-  };
 }
