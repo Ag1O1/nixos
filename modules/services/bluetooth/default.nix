@@ -1,9 +1,12 @@
-{ pkgs, lib, config, ... }:
-with lib;
-let
-  cfg = config.modules.services.bluetooth;
-in
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  cfg = config.modules.services.bluetooth;
+in {
   options.modules.services.bluetooth = {
     enable = lib.mkEnableOption "bluetooth";
   };

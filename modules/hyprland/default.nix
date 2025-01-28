@@ -1,24 +1,27 @@
-{pkgs, inputs, ...}: let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
   pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
-  imports =
-    [
-      ./binds.nix
-      ./decorations.nix
-      ./exec.nix
-      ./general.nix
-      ./ags
-      #inputs.split-monitor-workspaces.default
-    ];
+  imports = [
+    ./binds.nix
+    ./decorations.nix
+    ./exec.nix
+    ./general.nix
+    ./ags
+    #inputs.split-monitor-workspaces.default
+  ];
   hm = {
-  wayland.windowManager.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    #plugins = [
-    # inputs.split-monitor-workspaces.packages.x86_64-linux.split-monitor-workspaces
-    #];
-  };
-  home.sessionVariables.NIXOS_OZONE_WL = "1";
+    wayland.windowManager.hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      #plugins = [
+      # inputs.split-monitor-workspaces.packages.x86_64-linux.split-monitor-workspaces
+      #];
+    };
+    home.sessionVariables.NIXOS_OZONE_WL = "1";
   };
   hardware.graphics = {
     package = pkgs-unstable.mesa.drivers;
@@ -28,14 +31,14 @@ in {
   };
   programs.hyprland = {
     enable = true;
-   # set the flake package
+    # set the flake package
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     # make sure to also set the portal package, so that they are in sync
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
   hm.programs.hyprlock = {
     enable = true;
-      settings = {
+    settings = {
       general = {
         disable_loading_bar = true;
         grace = 300;

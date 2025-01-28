@@ -1,4 +1,10 @@
-{ pkgs, hm, config, lib, ... }:
+{
+  pkgs,
+  hm,
+  config,
+  lib,
+  ...
+}:
 with lib; let
   cfg = config.modules.programs.vm;
 in {
@@ -13,7 +19,7 @@ in {
           package = pkgs.qemu_kvm;
           swtpm.enable = true;
           ovmf.enable = true;
-          ovmf.packages = [ pkgs.OVMFFull.fd ];
+          ovmf.packages = [pkgs.OVMFFull.fd];
         };
       };
       spiceUSBRedirection.enable = true;
@@ -38,8 +44,8 @@ in {
     hm = {
       dconf.settings = {
         "org/virt-manager/virt-manager/connections" = {
-          autoconnect = [ "qemu:///system" ];
-          uris = [ "qemu:///system" ];
+          autoconnect = ["qemu:///system"];
+          uris = ["qemu:///system"];
         };
       };
     };

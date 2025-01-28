@@ -1,4 +1,9 @@
-{config, nixpkgs, lib, ...}:
+{
+  config,
+  nixpkgs,
+  lib,
+  ...
+}:
 with lib; let
   cfg = config.modules.services.pipewire;
 in {

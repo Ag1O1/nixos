@@ -1,1 +1,1 @@
-{imports=[./fs.nix];}
+{imports = [./fs.nix];}

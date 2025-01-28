@@ -1,10 +1,9 @@
 {
-  imports =
-    [
-      ./programs
-      ./services
-      ./system
-      ./hyprland
-      ./theming
-    ];
+  imports = [
+    ./programs
+    ./services
+    ./system
+    ./hyprland
+    ./theming
+  ];
 }

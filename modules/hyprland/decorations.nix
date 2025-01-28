@@ -2,14 +2,13 @@
   config,
   lib,
   ...
-}:{
+}: {
   hm.wayland.windowManager.hyprland.settings = {
     general = {
-      
       gaps_in = 0; #3
       gaps_out = 0; #6
 
-      border_size = 1; # 2 
+      border_size = 1; # 2
 
       # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
       "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
@@ -38,11 +37,11 @@
 
       # https://wiki.hyprland.org/Configuring/Variables/#blur
       blur = {
-          enabled = false;
-          size = 4;
-          passes = 1;
+        enabled = false;
+        size = 4;
+        passes = 1;
 
-          vibrancy = 0.1696;
+        vibrancy = 0.1696;
       };
     };
 
@@ -55,36 +54,36 @@
 
       # DYNAMIC
       bezier = [
-      "wind, 0.05, 0.9, 0.1, 1.05"
-      "winIn, 0.1, 1.1, 0.1, 1.1"
-      "winOut, 0.3, -0.3, 0, 1"
-      "liner, 1, 1, 1, 1"
+        "wind, 0.05, 0.9, 0.1, 1.05"
+        "winIn, 0.1, 1.1, 0.1, 1.1"
+        "winOut, 0.3, -0.3, 0, 1"
+        "liner, 1, 1, 1, 1"
       ];
       animation = [
         # DEFAULT
-      #"windows, 1, 5, myBezier"
-      #"windowsOut, 1, 5, default, popin 80%"
-      #"border, 1, 7, default"
-      #"borderangle, 1, 5, default"
-      #"fade, 1, 5, default"
-      #"workspaces, 1, 4, default"
+        #"windows, 1, 5, myBezier"
+        #"windowsOut, 1, 5, default, popin 80%"
+        #"border, 1, 7, default"
+        #"borderangle, 1, 5, default"
+        #"fade, 1, 5, default"
+        #"workspaces, 1, 4, default"
         # DYNAMIC
-      "windows, 1, 4, wind, slide"
-      "windowsIn, 1, 4, winIn, slide"
-      "windowsOut, 1, 5, winOut, slide"
-      "windowsMove, 1, 5, wind, slide"
-      #"border, 1, 1, liner"
-      #"borderangle, 1, 30, liner, loop"
-      "fade, 1, 10, default"
-      "workspaces, 1, 3, wind"
+        "windows, 1, 4, wind, slide"
+        "windowsIn, 1, 4, winIn, slide"
+        "windowsOut, 1, 5, winOut, slide"
+        "windowsMove, 1, 5, wind, slide"
+        #"border, 1, 1, liner"
+        #"borderangle, 1, 30, liner, loop"
+        "fade, 1, 10, default"
+        "workspaces, 1, 3, wind"
       ];
     };
-      dwindle ={
-        pseudotile = true;
-        preserve_split = true;
-      };
-      master ={
-        new_status = "master";
-      };
+    dwindle = {
+      pseudotile = true;
+      preserve_split = true;
+    };
+    master = {
+      new_status = "master";
+    };
   };
 }

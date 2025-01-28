@@ -4,17 +4,19 @@
   lib,
   ...
 }:
-/*let
+/*
+  let
   gruvboxplus = import ./gruvbox-plus.nix { inherit pkgs; };
-in*/
+in
+*/
 {
-  imports = [ ./css.nix ];
+  imports = [./css.nix];
 
   programs.dconf.enable = true;
   hm = {
     gtk = {
       enable = true;
-      
+
       cursorTheme = {
         name = "Bibata-Modern-Ice";
         package = pkgs.bibata-cursors;
@@ -24,8 +26,8 @@ in*/
         package = pkgs.catppuccin-gtk.override {
           variant = "mocha";
           size = "standard";
-          accents = [ "green" ];
-          tweaks = [ "normal" ];
+          accents = ["green"];
+          tweaks = ["normal"];
         };
         name = "catppuccin-mocha-green-standard+normal";
       };
@@ -86,7 +88,7 @@ in*/
         gtk-xft-hintstyle = "hintslight";
       };
     };
-    
+
     home.pointerCursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";

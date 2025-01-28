@@ -4,9 +4,7 @@
   lib,
   inputs,
   ...
-}:
-{
-
+}: {
   hm.wayland.windowManager.hyprland = {
     settings = {
       monitor = [

@@ -1,8 +1,7 @@
 {
-  imports =
-    [
-      ./nix-colors
-      ./gtk
-      ./qt
-    ];
+  imports = [
+    ./nix-colors
+    ./gtk
+    ./qt
+  ];
 }

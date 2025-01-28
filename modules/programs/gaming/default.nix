@@ -1,5 +1,9 @@
-{pkgs, config, lib, ...}:
-
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 with lib; let
   cfg = config.modules.programs.gaming;
 in {
@@ -17,6 +21,5 @@ in {
     ];
 
     programs.gamemode.enable = true;
-
   };
 }

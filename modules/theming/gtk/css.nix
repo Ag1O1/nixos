@@ -1,5 +1,4 @@
-{config,...}:
-let
+{config, ...}: let
   colors = config.colorScheme.palette;
 in {
   hm.home.file.".config/gtk-4.0/colors.css".text = ''
@@ -82,5 +81,4 @@ in {
     @define-color dark_4 mix(#282828,black,0.2);
     @define-color dark_5 mix(#282828,black,0.4);
   '';
-  
 }

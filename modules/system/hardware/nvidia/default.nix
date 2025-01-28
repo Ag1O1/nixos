@@ -4,7 +4,8 @@
   pkgs,
   lib,
   ...
-}: with lib; let
+}:
+with lib; let
   cfg = config.modules.system.hardware.nvidia;
 in {
   options.modules.system.hardware.nvidia = {
@@ -24,10 +25,11 @@ in {
 
     environment = {
       sessionVariables = mkMerge [
-        {LIBVA_DRIVER_NAME = "nvidia";
-        #WLR_NO_HARDWARE_CURSORS = "1";
-        #__GLX_VENDOR_LIBRARY_NAME = "nvidia";
-        GBM_BACKEND = "nvidia-drm"; # breaks firefox apparently
+        {
+          LIBVA_DRIVER_NAME = "nvidia";
+          #WLR_NO_HARDWARE_CURSORS = "1";
+          #__GLX_VENDOR_LIBRARY_NAME = "nvidia";
+          GBM_BACKEND = "nvidia-drm"; # breaks firefox apparently
         }
       ];
       systemPackages = with pkgs; [
