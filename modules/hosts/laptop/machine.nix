@@ -3,7 +3,6 @@
   self,
   ...
 }: {
-  # TODO cleanup this file
   flake = {
     nixosConfigurations.laptop = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -42,6 +41,7 @@
 
         yazi
         helium
+        qutebrowser
         gaming
         virt-manager
         logisim
@@ -58,6 +58,7 @@
       imports = [
         inputs.distro-grub-themes.nixosModules.x86_64-linux.default
       ];
+
       distro-grub-themes = {
         enable = true;
         theme = "nixos";
