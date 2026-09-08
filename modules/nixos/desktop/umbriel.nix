@@ -29,7 +29,6 @@
     ];
     programs.umbriel = {
       enable = true;
-      validateConfig = false;
       settings = {
         layout.mode = "scrolling";
         general.autostart = ["noctalia"];
@@ -186,6 +185,9 @@
           mode = "1920x1200@165";
           vrr = "always";
           direct_scanout = true;
+        };
+        drm = {
+          ignored_pci_addresses = ["0000:01:00.0"];
         };
 
         # Noctalia theme colors & writable for some script stuff
