@@ -9,8 +9,8 @@
       plugins = [pkgs.tmuxPlugins.resurrect];
 
       extraConfig = ''
-        bind -n M-j previous-window
-        bind -n M-k next-window
+        bind -n M-h previous-window
+        bind -n M-l next-window
       '';
     };
   };

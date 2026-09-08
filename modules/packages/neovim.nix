@@ -73,13 +73,13 @@
                   action = "<cmd>PasteImage<cr>";
                 }
                 {
-                  key = "<M-l>";
+                  key = "<M-k>";
                   mode = "n";
                   silent = true;
                   action = ":BufferLineCycleNext<CR>";
                 }
                 {
-                  key = "<M-h>";
+                  key = "<M-j>";
                   mode = "n";
                   silent = true;
                   action = ":BufferLineCyclePrev<CR>";
