@@ -25,5 +25,8 @@
       virtiofsd
     ];
     programs.virt-manager.enable = true;
+    custom.persist.directories = [
+      "/var/lib/libvirt"
+    ];
   };
 }

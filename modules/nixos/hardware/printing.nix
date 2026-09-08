@@ -1,4 +1,4 @@
-{...}: {
+{
   flake.modules.nixos.printing = {pkgs, ...}: {
     environment.systemPackages = [pkgs.simple-scan];
     services.printing = {
@@ -9,5 +9,8 @@
       enable = true;
       extraBackends = [pkgs.hplipWithPlugin];
     };
+    custom.persist.directories = [
+      "/var/lib/cups"
+    ];
   };
 }

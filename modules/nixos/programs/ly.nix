@@ -13,5 +13,8 @@
         full_color = true;
       };
     };
+    custom.persist.files = [
+      "/etc/ly/save.txt"
+    ];
   };
 }

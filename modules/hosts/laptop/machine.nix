@@ -9,35 +9,45 @@
       modules = with self.modules.nixos; [
         # Core
         nix
+        grub
         core-packages
+        preservation
+
+        # Machine specific
         laptopHardware
         laptopPackages
         laptopModule
         laptopKernel
-        laptopPreservation
+
+        # Hardware
+        networking
+        pipewire
+        printing
+        nvidia
+        asusd
+        ssh
+        tlp
+
         # User
         user-amr
         mime
         # Modules
         sops
         nix-search-tv
+        plymouth
+        flatpak
         theming
-        pipewire
-        networking
-        nvidia
-        tlp
         fish
         printing
         keyd
         direnv
         AI
         openrgb
+        waydroid
 
-        #niri
         ly
         umbriel
         noctalia
-        #mango
 
         yazi
         helium
@@ -55,15 +65,6 @@
       pkgs,
       ...
     }: {
-      imports = [
-        inputs.distro-grub-themes.nixosModules.x86_64-linux.default
-      ];
-
-      distro-grub-themes = {
-        enable = true;
-        theme = "nixos";
-      };
-
       systemd.services.systemd-machine-id-commit.enable = false;
 
       boot = {
@@ -85,12 +86,6 @@
             "btrfs"
           ];
         };
-
-        plymouth = {
-          enable = true;
-          themePackages = [pkgs.adi1090x-plymouth-themes];
-          theme = "deus_ex";
-        };
       };
 
       security = {
@@ -100,8 +95,6 @@
 
       services = {
         logind.settings.Login.HandleLidSwitch = "ignore";
-        openssh.enable = true;
-        flatpak.enable = true;
         gnome.gnome-keyring.enable = true;
         ratbagd.enable = true;
       };
@@ -111,7 +104,6 @@
         zoxide.enable = true;
         kdeconnect.enable = true;
       };
-      virtualisation.waydroid.enable = true;
 
       environment.shellAliases = {
         os-rebuild = "nh os switch /home/amr/nixos -H laptop";
@@ -140,10 +132,6 @@
         nvidiaBusId = "PCI:1:0:0";
       };
 
-      services = {
-        asusd.enable = true;
-      };
-
       # Fix for laptop backlight
       # Source: @RPochyly4 in https://gitlab.com/asus-linux/asusctl/-/work_items/682
       systemd.services.asus-keyboard-ec-mode = {
@@ -170,15 +158,6 @@
 
           "pcie_aspm=force"
         ];
-        loader = {
-          efi.canTouchEfiVariables = true;
-          grub = {
-            enable = true;
-            useOSProber = true;
-            device = "nodev";
-            efiSupport = true;
-          };
-        };
       };
 
       ##### File system configuration #####

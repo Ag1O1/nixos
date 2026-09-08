@@ -1,4 +1,4 @@
-{...}: {
+{
   flake.modules.nixos.networking = {
     networking = {
       networkmanager = {
@@ -9,5 +9,9 @@
         #allowedTCPPorts = [];
       };
     };
+    custom.persist.directories = [
+      "/var/lib/NetworkManager"
+      "/etc/NetworkManager/system-connections"
+    ];
   };
 }
