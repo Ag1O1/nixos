@@ -1,13 +1,15 @@
 {
-  description = "Description for the project";
+  description = "My nixconf";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
+
+    haumea = {
+      url = "github:nix-community/haumea";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    import-tree.url = "github:vic/import-tree";
+
     preservation.url = "github:nix-community/preservation";
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -47,5 +49,85 @@
     distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
   };
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    haumea,
+    ...
+  }: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+
+    m = haumea.lib.load {
+      src = ./modules/nixos;
+      loader = haumea.lib.loaders.path;
+      inputs = {inherit inputs;};
+    };
+    sharedModules = [
+      m.core.nix
+      m.core.networking
+      m.core.core-packages
+      m.core.preservation
+      m.services.mime
+      m.services.sops
+
+      m.services.boot
+      m.services.plymouth
+
+      m.programs.fish
+      m.programs.neovim
+      m.theming
+      ./modules/users/amr.nix
+    ];
+  in {
+    nixosConfigurations = {
+      laptop = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs self;};
+        modules =
+          sharedModules
+          ++ [
+            ./modules/hosts/laptop/machine.nix
+            ./modules/hosts/laptop/hardware.nix
+            ./modules/hosts/laptop/packages.nix
+            ./modules/hosts/laptop/kernel.nix
+            # Hardware
+            m.hardware.nvidia
+            m.hardware.asusd
+            m.hardware.tlp
+
+            # Programs
+            m.programs.nix-search-tv
+            m.programs.openrgb
+            m.programs.gaming
+            m.programs.virt-manager
+            m.programs.logisim
+            m.programs.tmux
+            m.programs.lazygit
+            m.programs.obs
+            m.programs.waydroid
+            m.programs.ly
+            m.programs.noctalia
+            m.programs.yazi
+            m.programs.helium
+            m.programs.qutebrowser
+
+            # Services
+            m.services.pipewire
+            m.services.ssh
+            m.services.flatpak
+            m.services.printing
+            m.services.keyd
+            m.services.direnv
+            m.services.AI
+
+            # Desktop
+            m.desktop.umbriel
+          ];
+      };
+    };
+    devShells.${system}.default = pkgs.mkShell {
+      packages = with pkgs; [nil nixd alejandra];
+    };
+  };
 }

@@ -1,15 +1,13 @@
-{
-  flake.modules.nixos.AI = {pkgs, ...}: {
-    services = {
-      ollama = {
-        enable = true;
-        openFirewall = true;
-        package = pkgs.ollama-cuda;
-      };
+{pkgs, ...}: {
+  services = {
+    ollama = {
+      enable = true;
+      openFirewall = true;
+      package = pkgs.ollama-cuda;
     };
-
-    custom.persist.directories = [
-      "/var/lib/private/ollama"
-    ];
   };
+
+  custom.persist.directories = [
+    "/var/lib/private/ollama"
+  ];
 }

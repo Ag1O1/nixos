@@ -1,29 +1,25 @@
-{inputs, ...}: {
-  flake.modules.nixos.umbriel = {pkgs, ...}: {
-    imports = [
-      inputs.umbriel.nixosModules.default
-    ];
-    programs.umbriel = {
-      enable = true;
-      portalPackage = inputs.xdg-desktop-portal-umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    };
-    hj.imports = [
-      inputs.self.modules.hjem.umbriel
-    ];
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: let
+  mkScript = name: pkgs.writeShellScript name (builtins.readFile ./scripts/${name});
+  fileNames = builtins.attrNames (builtins.readDir ./scripts);
+  scripts = builtins.listToAttrs (map (name: {
+      name = lib.removeSuffix ".sh" name;
+      value = mkScript name;
+    })
+    fileNames);
+in {
+  imports = [
+    inputs.umbriel.nixosModules.default
+  ];
+  programs.umbriel = {
+    enable = true;
+    portalPackage = inputs.xdg-desktop-portal-umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
-  flake.modules.hjem.umbriel = {
-    pkgs,
-    lib,
-    ...
-  }: let
-    mkScript = name: pkgs.writeShellScript name (builtins.readFile ./scripts/${name});
-    fileNames = builtins.attrNames (builtins.readDir ./scripts);
-    scripts = builtins.listToAttrs (map (name: {
-        name = lib.removeSuffix ".sh" name;
-        value = mkScript name;
-      })
-      fileNames);
-  in {
+  hj = {
     imports = [
       inputs.umbriel.hjemModules.default
     ];
