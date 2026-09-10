@@ -68,7 +68,7 @@ in {
     };
     browser = mkOption {
       type = str;
-      default = "org.qutebrowser.qutebrowser";
+      default = "librewolf";
       description = "Defines browser";
     };
     pdf = mkOption {

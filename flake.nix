@@ -110,7 +110,7 @@
             m.programs.noctalia
             m.programs.yazi
             m.programs.helium
-            m.programs.qutebrowser
+            m.programs.firefox
 
             # Services
             m.services.pipewire

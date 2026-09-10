@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     #self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovim
-    qutebrowser
     wlr-randr
     calibre
     piper
