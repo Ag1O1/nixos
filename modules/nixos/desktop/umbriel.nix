@@ -12,6 +12,7 @@
     })
     fileNames);
 in {
+  /*
   imports = [
     inputs.umbriel.nixosModules.default
   ];
@@ -19,10 +20,29 @@ in {
     enable = true;
     portalPackage = inputs.xdg-desktop-portal-umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
+  */
+  environment.systemPackages = [
+    inputs.umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # So `just debug` / meson outside `nix develop` can find headers via pkg-config.
+    pkgs.tomlplusplus
+  ];
+  xdg.portal = {
+    enable = lib.mkDefault true;
+    portals = [inputs.xdg-desktop-portal-umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default];
+  };
   hj = {
     imports = [
       inputs.umbriel.hjemModules.default
     ];
+    xdg.config.files."xdg-desktop-portal/portals.conf".text = ''
+      [preferred]
+      default=umbriel;gtk
+    '';
+    # TODO check if this one works (and if so delete the one above)
+    xdg.config.files."xdg-desktop-portal/umbriel-portals.conf".text = ''
+      [preferred]
+      default=umbriel;gtk
+    '';
     programs.umbriel = {
       enable = true;
       settings = {

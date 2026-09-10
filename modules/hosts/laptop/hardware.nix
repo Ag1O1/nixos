@@ -1,10 +1,10 @@
 {
   lib,
   pkgs,
+  fm,
   ...
 }: {
-  system.stateVersion = "25.11";
-  hardware.facter.reportPath = ./facter.json;
+  imports = [fm.gvfs fm.udisks2];
   time.timeZone = "Africa/Cairo";
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -19,15 +19,10 @@
 
   # Fix for laptop backlight
   # Source: @RPochyly4 in https://gitlab.com/asus-linux/asusctl/-/work_items/682
-  systemd.services.asus-keyboard-ec-mode = {
+  finit.services.asus-keyboard-ec-mode = {
     description = "Initialize ASUS keyboard RGB controller";
-
-    wantedBy = ["multi-user.target"];
-
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${lib.getExe pkgs.hidapitester} --vidpid 0B05:19B6 --open --send-feature 70,1";
-    };
+    runlevels = "2345";
+    command = "${lib.getExe pkgs.hidapitester} --vidpid 0B05:19B6 --open --send-feature 70,1";
   };
 
   boot = {
@@ -45,12 +40,17 @@
     ];
   };
 
+  hardware.firmware = [pkgs.linux-firmware];
+  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "thunderbolt"];
+  boot.initrd.kernelModules = [];
+  boot.kernelModules = ["kvm-amd"];
+  boot.extraModulePackages = [];
+
   ##### File system configuration #####
 
   services = {
     gvfs.enable = true;
     udisks2.enable = true;
-    devmon.enable = true;
   };
 
   fileSystems = {
@@ -128,7 +128,7 @@
   swapDevices = [
     {
       device = "/mnt/swap/swapfile";
-      size = 24576; # MiB
+      #size = 24576; # MiB
     }
   ];
 }

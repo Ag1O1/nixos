@@ -1,6 +1,4 @@
 {pkgs, ...}: {
-  programs.obs-studio = {
-    enable = true;
-    plugins = [pkgs. obs-studio-plugins.obs-pipewire-audio-capture];
-  };
+  # TODO reconfigure obs
+  environment.systemPackages = [pkgs.obs-studio];
 }

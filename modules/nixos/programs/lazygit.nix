@@ -1,8 +1,4 @@
-{
-  programs.lazygit = {
-    enable = true;
-    settings = {
-      git.autoFetch = false;
-    };
-  };
+{pkgs, ...}: {
+  # TODO Hjem config for this
+  environment.systemPackages = [pkgs.lazygit];
 }

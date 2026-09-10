@@ -1,8 +1,13 @@
-{lib, ...}: {
+{
+  lib,
+  fm,
+  ...
+}: {
+  imports = [fm.tlp fm.power-profiles-daemon];
   services.power-profiles-daemon.enable = lib.mkForce false;
   services.tlp = {
     enable = true;
-    pd.enable = true;
+    # TODO check pd
     settings = {
       # General
       NMI_WATCHDOG = 0;

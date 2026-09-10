@@ -10,11 +10,8 @@
     pkgs.xsettingsd
     pkgs.xrdb
   ];
-  environment.sessionVariables = {
+  environment.variables = {
     GTK_THEME = "adw-gtk3";
-  };
-  qt = {
-    enable = true;
-    platformTheme = "qt5ct";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 }

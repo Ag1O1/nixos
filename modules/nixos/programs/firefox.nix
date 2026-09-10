@@ -1,7 +1,4 @@
 {pkgs, ...}: {
-  programs.firefox = {
-    enable = true;
-    package = pkgs.librewolf;
-  };
-  environment.systemPackages = [pkgs.pywalfox-native];
+  # TODO: write config with hjem
+  environment.systemPackages = [pkgs.pywalfox-native pkgs.librewolf];
 }

@@ -1,8 +1,12 @@
 {
   pkgs,
   lib,
+  fm,
   ...
 }: {
+  imports = [fm.fish];
+  programs.fish.enable = true;
+
   environment.systemPackages = [
     pkgs.fishPlugins.tide
     pkgs.fishPlugins.done
@@ -24,18 +28,19 @@
       nix edit nixpkgs#$argv[1]
     '')
   ];
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''
+
+  hj.xdg.config.files = {
+    "fish/conf.d/init.fish".text = ''
       set fish_greeting # Disable greeting
     '';
-  };
-  environment.shellAliases = {
-    nsearch = "nix search nixpkgs";
-    grep = "grep --color=auto";
-    ls = "${lib.getExe pkgs.eza} --icons=always";
-    ll = "${lib.getExe pkgs.eza} --icons=always --long";
-    la = "${lib.getExe pkgs.eza} --icons=always --long --all";
-    lt = "${lib.getExe pkgs.eza} --icons=always --tree";
+
+    "fish/conf.d/aliases.fish".text = ''
+      alias nsearch="nix search nixpkgs"
+      alias grep="grep --color=auto"
+      alias ls="${lib.getExe pkgs.eza} --icons=always"
+      alias ll="${lib.getExe pkgs.eza} --icons=always --long"
+      alias la="${lib.getExe pkgs.eza} --icons=always --long --all"
+      alias lt="${lib.getExe pkgs.eza} --icons=always --tree"
+    '';
   };
 }

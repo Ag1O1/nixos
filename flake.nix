@@ -5,16 +5,15 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
 
+    finix.url = "github:finix-community/finix";
+    community-modules.url = "github:finix-community/community-modules";
+
     haumea = {
       url = "github:nix-community/haumea";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     preservation.url = "github:nix-community/preservation";
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     hjem = {
       url = "github:feel-co/hjem";
@@ -45,18 +44,29 @@
     };
 
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
-
-    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
+    finix,
     haumea,
+    community-modules,
     ...
   }: let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = import nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+        permittedInsecurePackages = [
+          "electron-39.8.10"
+        ];
+      };
+      overlays = [
+        inputs.nix-cachyos-kernel.overlays.pinned
+      ];
+    };
 
     m = haumea.lib.load {
       src = ./modules/nixos;
@@ -69,7 +79,6 @@
       m.core.core-packages
       m.core.preservation
       m.services.mime
-      m.services.sops
 
       m.services.boot
       m.services.plymouth
@@ -81,11 +90,18 @@
     ];
   in {
     nixosConfigurations = {
-      laptop = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs self;};
+      laptop = finix.lib.finixSystem {
+        inherit (pkgs) lib;
+        specialArgs = {
+          inherit inputs self;
+          fm = finix.nixosModules;
+          cm = community-modules.nixosModules;
+        };
         modules =
-          sharedModules
+          [
+            {nixpkgs.pkgs = pkgs;}
+          ]
+          ++ sharedModules
           ++ [
             ./modules/hosts/laptop/machine.nix
             ./modules/hosts/laptop/hardware.nix
@@ -95,12 +111,12 @@
             m.hardware.nvidia
             m.hardware.asusd
             m.hardware.tlp
+            m.hardware.bluetooth
 
             # Programs
             m.programs.nix-search-tv
             m.programs.openrgb
             m.programs.gaming
-            m.programs.virt-manager
             m.programs.logisim
             m.programs.tmux
             m.programs.lazygit
@@ -119,7 +135,6 @@
             m.services.printing
             m.services.keyd
             m.services.direnv
-            m.services.AI
 
             # Desktop
             m.desktop.umbriel

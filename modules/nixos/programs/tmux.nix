@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  environment.systemPackages = [pkgs.tmux];
+
+  # Also convert to hjem
+  /*
   programs.tmux = {
     enable = true;
     baseIndex = 1;
@@ -12,4 +16,5 @@
       bind -n M-l next-window
     '';
   };
+  */
 }
