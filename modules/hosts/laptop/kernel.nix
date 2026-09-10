@@ -200,9 +200,9 @@
         RAPIDIO = lib.mkForce no;
 
         # Legacy USB (keep XHCI only)
-        USB_OHCI_HCD = lib.mkForce no;
-        USB_UHCI_HCD = lib.mkForce no;
-        USB_EHCI_HCD = lib.mkForce no;
+        #USB_OHCI_HCD = lib.mkForce no;
+        #USB_UHCI_HCD = lib.mkForce no;
+        #USB_EHCI_HCD = lib.mkForce no;
 
         # Other laptop brands (keep ASUS only)
         X86_PLATFORM_DRIVERS_DELL = lib.mkForce no;

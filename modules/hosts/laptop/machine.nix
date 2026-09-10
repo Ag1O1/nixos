@@ -1,15 +1,18 @@
 {
   fm,
   lib,
+  pkgs,
   ...
 }: {
   imports = [fm.gnome-keyring fm.sudo];
+  #boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-zen4;
   boot = {
     initrd = {
       #includeDefaultModules = lib.mkForce false;
-      availableKernelModules = lib.mkForce [
+      availableKernelModules = [
         "nvme"
         "xhci_pci"
+        "thunderbolt"
         "ahci"
         "usbhid"
         "usb_storage"

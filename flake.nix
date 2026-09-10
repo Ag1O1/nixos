@@ -81,7 +81,7 @@
       m.services.mime
 
       m.services.boot
-      m.services.plymouth
+      #m.services.plymouth
 
       m.programs.fish
       m.programs.neovim

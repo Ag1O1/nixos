@@ -1,20 +1,14 @@
 {pkgs, ...}: {
   environment.systemPackages = [pkgs.tmux];
 
-  # Also convert to hjem
-  /*
-  programs.tmux = {
-    enable = true;
-    baseIndex = 1;
-    escapeTime = 0;
-    shortcut = "Space";
-    keyMode = "vi";
-    plugins = [pkgs.tmuxPlugins.resurrect];
+  hj.xdg.config.files."tmux/tmux.conf".text = ''
+    set -g base-index 1
+    set -g escape-time 0
+    set -g prefix C-Space
+    set -g status-keys vi
+    set -g mode-keys vi
 
-    extraConfig = ''
-      bind -n M-h previous-window
-      bind -n M-l next-window
-    '';
-  };
-  */
+    bind -n M-h previous-window
+    bind -n M-l next-window
+  '';
 }

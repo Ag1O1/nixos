@@ -57,6 +57,7 @@
     "/" = {
       device = "tmpfs";
       fsType = "tmpfs";
+      neededForBoot = true;
       options = [
         "defaults"
         "size=4G"
@@ -66,6 +67,7 @@
     "/boot" = {
       device = "/dev/disk/by-uuid/66E7-77B4";
       fsType = "vfat";
+      neededForBoot = true;
       options = ["fmask=0077" "dmask=0077"];
     };
     "/home" = {
@@ -109,6 +111,7 @@
     "/mnt/swap" = {
       device = "/dev/disk/by-uuid/430c366d-f6d8-4592-a26a-561a29d94de1";
       fsType = "btrfs";
+      neededForBoot = true;
       options = [
         "subvol=@swap"
         "noatime"
