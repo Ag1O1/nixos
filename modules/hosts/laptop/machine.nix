@@ -1,10 +1,11 @@
 {
   fm,
+  cm,
   lib,
   pkgs,
   ...
 }: {
-  imports = [fm.gnome-keyring fm.sudo fm.bash fm.sysklogd fm.polkit fm.getty fm.iwd fm.niri];
+  imports = [fm.gnome-keyring fm.sudo fm.bash fm.sysklogd fm.polkit fm.getty fm.iwd fm.niri cm.fastfetch];
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-zen4;
   boot = {
     initrd = {
@@ -21,7 +22,8 @@
       ];
     };
   };
-programs.niri.enable = true;
+  programs.niri.enable = true;
+  programs.fastfetch.enable = true;
 
   finit.runlevel = 3;
 
