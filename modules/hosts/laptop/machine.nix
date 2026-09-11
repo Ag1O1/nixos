@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  imports = [fm.gnome-keyring fm.sudo];
-  #boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-zen4;
+  imports = [fm.gnome-keyring fm.sudo fm.bash fm.sysklogd fm.polkit fm.getty fm.iwd fm.niri];
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-zen4;
   boot = {
     initrd = {
       #includeDefaultModules = lib.mkForce false;
@@ -21,15 +21,22 @@
       ];
     };
   };
+programs.niri.enable = true;
 
   finit.runlevel = 3;
 
   users.users.root.password = "$y$j9T$6xDOxYv1styslfWtv5Dgd.$JVn13FwJ/NyGGJ/urZB0SaeJG7ok3Ul9HcSKxzZVIA8";
 
-  services.udev.enable = true;
-  services.seatd.enable = true;
+  services.polkit.enable = true;
+  services.getty.enable = true;
+  services.gardendevd.enable = true;
+  services.elogind.enable = true;
+  #services.seatd.enable = true;
+  services.sysklogd.enable = true;
+  services.dbus.enable = true;
 
   programs = {
+    bash.enable = true;
     sudo.enable = true;
     gnome-keyring.enable = true;
   };

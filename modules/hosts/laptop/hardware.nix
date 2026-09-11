@@ -38,12 +38,12 @@
 
       "pcie_aspm=force"
     ];
+kernelModules = ["kvm-amd" "amdgpu"];
   };
 
   hardware.firmware = [pkgs.linux-firmware];
   boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "thunderbolt"];
   boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
 
   ##### File system configuration #####
@@ -64,6 +64,16 @@
         "mode=755"
       ];
     };
+    "/tmp" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+      neededForBoot = true;
+      options = [
+        "defaults"
+        "size=1G"
+        "mode=1777"
+      ];
+    };
     "/boot" = {
       device = "/dev/disk/by-uuid/66E7-77B4";
       fsType = "vfat";
@@ -73,6 +83,7 @@
     "/home" = {
       device = "/dev/disk/by-uuid/430c366d-f6d8-4592-a26a-561a29d94de1";
       fsType = "btrfs";
+      neededForBoot = true;
       options = [
         "subvol=@home"
         "compress=zstd:1"
@@ -120,6 +131,7 @@
     "/nix" = {
       device = "/dev/disk/by-uuid/430c366d-f6d8-4592-a26a-561a29d94de1";
       fsType = "btrfs";
+      neededForBoot = true;
       options = [
         "subvol=@nix"
         "compress=zstd:1"

@@ -81,7 +81,7 @@
       m.services.mime
 
       m.services.boot
-      #m.services.plymouth
+      m.services.plymouth
 
       m.programs.fish
       m.programs.neovim
@@ -106,7 +106,7 @@
             ./modules/hosts/laptop/machine.nix
             ./modules/hosts/laptop/hardware.nix
             ./modules/hosts/laptop/packages.nix
-            ./modules/hosts/laptop/kernel.nix
+#           ./modules/hosts/laptop/kernel.nix
             # Hardware
             m.hardware.nvidia
             m.hardware.asusd

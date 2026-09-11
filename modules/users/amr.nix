@@ -28,6 +28,7 @@ in {
       shell = pkgs.fish;
       isNormalUser = true;
       extraGroups = [
+        "seat" # seatd
         "ydotool"
         "networkmanager"
         "wheel"
