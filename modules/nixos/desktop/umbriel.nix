@@ -4,6 +4,8 @@
   lib,
   ...
 }: let
+  umbriel = inputs.umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default;
+
   mkScript = name: pkgs.writeShellScript name (builtins.readFile ./scripts/${name});
   fileNames = builtins.attrNames (builtins.readDir ./scripts);
   scripts = builtins.listToAttrs (map (name: {
@@ -12,6 +14,7 @@
     })
     fileNames);
 in {
+  imports = [./_module.nix];
   /*
   imports = [
     inputs.umbriel.nixosModules.default
@@ -21,11 +24,11 @@ in {
     portalPackage = inputs.xdg-desktop-portal-umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
   */
-  environment.systemPackages = [
-    inputs.umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default
-    # So `just debug` / meson outside `nix develop` can find headers via pkg-config.
-    pkgs.tomlplusplus
-  ];
+  programs.umbriel = {
+    enable = true;
+    package = umbriel;
+  };
+
   xdg.portal = {
     enable = lib.mkDefault true;
     portals = [inputs.xdg-desktop-portal-umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default];
@@ -34,11 +37,7 @@ in {
     imports = [
       inputs.umbriel.hjemModules.default
     ];
-    xdg.config.files."xdg-desktop-portal/portals.conf".text = ''
-      [preferred]
-      default=umbriel;gtk
-    '';
-    # TODO check if this one works (and if so delete the one above)
+    # idk if this works
     xdg.config.files."xdg-desktop-portal/umbriel-portals.conf".text = ''
       [preferred]
       default=umbriel;gtk
