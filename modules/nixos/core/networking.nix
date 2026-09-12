@@ -3,14 +3,12 @@
   pkgs,
   ...
 }: {
-  imports = [fm.networkmanager];
+  imports = [fm.networkmanager fm.nftables];
   services.networkmanager.enable = true;
 
-  # Ensure wpa_supplicant is available for Wi-Fi
-  environment.systemPackages = [pkgs.wpa_supplicant];
+  providers.firewall.backend = "nftables";
+  services.nftables.enable = true;
 
-  # Make sure the group exists
-  users.groups.networkmanager = {};
   custom.persist.directories = [
     "/var/lib/NetworkManager"
     "/etc/NetworkManager/system-connections"
