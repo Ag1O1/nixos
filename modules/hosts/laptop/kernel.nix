@@ -58,7 +58,7 @@
 
         # ─── GPU: AMD ─────────────────────────────────────────────────────────
         DRM = yes;
-        DRM_AMDGPU = yes;
+        DRM_AMDGPU = module;
         DRM_AMDGPU_USERPTR = yes;
         DRM_AMD_DC = yes;
         DRM_AMD_DC_FP = yes;
@@ -200,9 +200,9 @@
         RAPIDIO = lib.mkForce no;
 
         # Legacy USB (keep XHCI only)
-        #USB_OHCI_HCD = lib.mkForce no;
-        #USB_UHCI_HCD = lib.mkForce no;
-        #USB_EHCI_HCD = lib.mkForce no;
+        USB_OHCI_HCD = lib.mkForce no;
+        USB_UHCI_HCD = lib.mkForce no;
+        USB_EHCI_HCD = lib.mkForce no;
 
         # Other laptop brands (keep ASUS only)
         X86_PLATFORM_DRIVERS_DELL = lib.mkForce no;
@@ -242,7 +242,7 @@
 
         # Debug & Tracing (disables for performance)
         DEBUG_INFO_BTF = yes;
-        DEBUG_FS = lib.mkForce no;
+        DEBUG_FS = yes;
         DEBUG_KERNEL = lib.mkForce no;
         DEBUG_INFO = lib.mkForce no;
         DYNAMIC_DEBUG = lib.mkForce no;
@@ -256,6 +256,18 @@
         SLUB_DEBUG = lib.mkForce no;
         KFENCE = lib.mkForce no;
         PRINTK_TIME = lib.mkForce no;
+
+        # Some extra stuff
+        USB4 = module;
+        THUNDERBOLT = module;
+        TYPEC_UCSI = module;
+        UCSI_ACPI = module;
+        AMD_XDNA = module;
+        SND_SOC_AMD_PS = module;
+        RTW89_8852CE = module;
+        ASUS_ARMOURY = module;
+        CRYPTO_DEV_CCP = yes;
+        CRYPTO_DEV_SP_PSP = yes;
       };
     }
   ];
