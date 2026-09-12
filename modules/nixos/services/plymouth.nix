@@ -1,7 +1,7 @@
 {pkgs, ...}: {
-  boot.plymouth = {
+  programs.plymouth = {
     enable = true;
-    themePackages = [pkgs.adi1090x-plymouth-themes];
-    theme = "deus_ex";
+    theme = pkgs.adi1090x-plymouth-themes;
+    settings.Daemon.Theme = "deus_ex";
   };
 }

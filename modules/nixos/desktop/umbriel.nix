@@ -4,6 +4,8 @@
   lib,
   ...
 }: let
+  umbriel = inputs.umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default;
+
   mkScript = name: pkgs.writeShellScript name (builtins.readFile ./scripts/${name});
   fileNames = builtins.attrNames (builtins.readDir ./scripts);
   scripts = builtins.listToAttrs (map (name: {
@@ -12,6 +14,8 @@
     })
     fileNames);
 in {
+  imports = [./_module.nix];
+  /*
   imports = [
     inputs.umbriel.nixosModules.default
   ];
@@ -19,15 +23,31 @@ in {
     enable = true;
     portalPackage = inputs.xdg-desktop-portal-umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
+  */
+  programs.umbriel = {
+    enable = true;
+    package = umbriel;
+  };
+
+  xdg.portal = {
+    enable = lib.mkDefault true;
+    portals = [inputs.xdg-desktop-portal-umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default];
+  };
   hj = {
     imports = [
       inputs.umbriel.hjemModules.default
     ];
+    # idk if this works
+    xdg.config.files."xdg-desktop-portal/umbriel-portals.conf".text = ''
+      [preferred]
+      default=umbriel;gtk
+    '';
     programs.umbriel = {
       enable = true;
       settings = {
         layout.mode = "scrolling";
-        general.autostart = ["noctalia"];
+        general.autostart = ["noctalia" "pipewire" "pipewire-pulse" "sleep 1 && wireplumber"];
+
         layout.gap = 5;
         input = {
           focus = {
@@ -41,6 +61,9 @@ in {
           };
           mouse = {
             accel_profile = "flat";
+          };
+          cursor = {
+            theme = "Bibata-Modern-Ice";
           };
           keyboard = {
             repeat_rate = 30;
@@ -79,7 +102,8 @@ in {
 
           "Mod+Shift+S" = "spawn:noctalia msg screenshot-region";
           "Mod+Shift+Alt+S" = "spawn:noctalia msg screenshot-fullscreen";
-          "Mod+Shift+Ctrl+S" = ''spawn:${lib.getExe' pkgs.wl-clipboard "wl-paste"} | ${lib.getExe pkgs.satty} --filename -'';
+          "Mod+Ctrl+S" = ''spawn:noctalia msg annotate'';
+          "Mod+Shift+Ctrl+S" = ''spawn:tmp=$(mktemp --suffix=.png); trap 'rm -f "$tmp"' EXIT; ${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image/png >"$tmp" && noctalia msg annotate "$tmp"'';
 
           ### XF86 Keys ###
           "XF86AudioRaiseVolume" = "spawn:noctalia msg volume-up";
@@ -92,6 +116,7 @@ in {
           "XF86AudioPrev" = "spawn:noctalia msg media previous";
           "XF86MonBrightnessUp" = "spawn:noctalia msg brightness-up";
           "XF86MonBrightnessDown" = "spawn:noctalia msg brightness-down";
+          "XF86Sleep" = "spawn:sudo zzz";
 
           ### Workspaces ###
           "Mod+1" = "workspace-switch:1";

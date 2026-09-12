@@ -9,7 +9,7 @@
   user = "amr";
 in {
   imports = [
-    inputs.hjem.nixosModules.default
+    inputs.hjem.finixModules.default
 
     (
       lib.mkAliasOptionModule
@@ -24,10 +24,13 @@ in {
   users.users = {
     amr = {
       enable = true;
-      hashedPasswordFile = config.sops.secrets.user_pass.path;
+      password = "$y$j9T$Y2uJLXLmZQ4qgcKG2oRCM/$a4YhLj6f6uOC2LZe7md6Mi4rt7spr7bfqed4opRE8J2";
       shell = pkgs.fish;
       isNormalUser = true;
       extraGroups = [
+        "seat" # seatd
+        "audio"
+        "render"
         "ydotool"
         "networkmanager"
         "wheel"
@@ -46,7 +49,7 @@ in {
   hj = {
     enable = true;
   };
-  environment.sessionVariables = {
+  environment.variables = {
     EDITOR = "nvim";
     TERMINAL = "ghostty";
   };

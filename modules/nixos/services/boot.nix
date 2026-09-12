@@ -1,20 +1,7 @@
-{inputs, ...}: {
-  imports = [
-    inputs.distro-grub-themes.nixosModules.x86_64-linux.default
-  ];
-
-  distro-grub-themes = {
+{fm, ...}: {
+  imports = [fm.limine];
+  boot.loader.efi.canTouchEfiVariables = true;
+  programs.limine = {
     enable = true;
-    theme = "nixos";
-  };
-
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    grub = {
-      enable = true;
-      useOSProber = true;
-      device = "nodev";
-      efiSupport = true;
-    };
   };
 }

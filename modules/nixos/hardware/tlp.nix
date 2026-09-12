@@ -1,5 +1,11 @@
-{lib, ...}: {
-  services.power-profiles-daemon.enable = lib.mkForce false;
+{
+  lib,
+  fm,
+  pkgs,
+  ...
+}: {
+  imports = [fm.tlp];
+  environment.systemPackages = [pkgs.tlp-pd];
   services.tlp = {
     enable = true;
     pd.enable = true;

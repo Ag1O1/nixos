@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  environment.systemPackages = [pkgs.yazi];
+
+  /*
   programs.yazi = {
     enable = true;
     plugins = {
@@ -6,4 +9,5 @@
       compress = pkgs.yaziPlugins.compress;
     };
   };
+  */
 }

@@ -26,7 +26,6 @@ declaratively (yet), and themes are currently set by
 | file | description |
 | ------ | ----- |
 | flake.nix | Main flake |
-| secrets/ | Sops secrets |
 | modules/ | Main modules |
 | -> hosts/ | Contains host specifics |
 | -> users/ | Contains user configuration |

@@ -1,5 +1,5 @@
 {
-  inputs,
+  cm,
   lib,
   config,
   ...
@@ -8,7 +8,7 @@
   inherit (lib.options) mkOption;
   inherit (lib.types) listOf anything;
 in {
-  imports = [inputs.preservation.nixosModules.default];
+  imports = [cm.preservation];
   options.custom.persist = {
     files = mkOption {
       type = listOf anything;
@@ -29,7 +29,7 @@ in {
           [
             {
               file = "/etc/machine-id";
-              inInitrd = true;
+              #inInitrd = true;
               how = "symlink";
             }
           ]

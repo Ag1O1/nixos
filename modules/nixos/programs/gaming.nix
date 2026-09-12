@@ -1,15 +1,11 @@
 {
   inputs,
+  fm,
+  cm,
   pkgs,
-  system,
   ...
-}: let
-  pkgsStable = import inputs.nixpkgs-stable {
-    system = pkgs.stdenv.hostPlatform.system;
-    config.allowUnfree = true;
-  };
-in {
-  programs.appimage.enable = true;
+}: {
+  imports = [cm.steam fm.gamemode];
   programs.steam = {
     enable = true;
     package = inputs.millennium.packages."${pkgs.system}".millennium-steam;
@@ -23,9 +19,9 @@ in {
     };
     */
   };
-  programs.steam.gamescopeSession.enable = true;
   environment.systemPackages = [
     pkgs.prismlauncher # Minecraft
+    pkgs.appimage-run
     pkgs.love # to run love2d games
     pkgs.mangohud
     (pkgs.lutris.override {

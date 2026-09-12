@@ -4,15 +4,17 @@
   ...
 }:
 with lib; {
-  services.xserver.videoDrivers = ["nvidia"];
   hardware = {
     graphics.enable = true;
     nvidia = {
+      enable = true;
       modesetting.enable = true;
-      open = mkDefault true;
+      kernelModule = "open";
       package = mkDefault config.boot.kernelPackages.nvidiaPackages.bleeding_edge;
-      powerManagement.enable = true;
-      powerManagement.finegrained = true;
+      power = {
+        suspend.enable = true;
+        runtime.enable = true;
+      };
     };
   };
 }

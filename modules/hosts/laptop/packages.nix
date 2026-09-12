@@ -1,6 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  fm,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     #self.packages.${pkgs.stdenv.hostPlatform.system}.myNeovim
+    gnused
     wlr-randr
     calibre
     piper
@@ -45,20 +50,31 @@
     ghostty
     bibata-cursors
   ];
-  fonts.packages = with pkgs; [
-    wineWow64Packages.fonts
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.fira-code
-    corefonts
-    vista-fonts
-    unifont
-    cascadia-code
-    fira-code
-    fira-sans
-    inter
-    roboto-serif
-    noto-fonts-color-emoji
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-  ];
+  fonts = {
+    packages = with pkgs; [
+      wineWow64Packages.fonts
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.fira-code
+      corefonts
+      vista-fonts
+      unifont
+      cascadia-code
+      fira-code
+      fira-sans
+      inter
+      roboto-serif
+      noto-fonts-color-emoji
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+    ];
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        monospace = [];
+        sansSerif = [];
+        serif = [];
+        emoji = [];
+      };
+    };
+  };
 }
