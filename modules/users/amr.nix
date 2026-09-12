@@ -29,6 +29,8 @@ in {
       isNormalUser = true;
       extraGroups = [
         "seat" # seatd
+        "audio"
+        "render"
         "ydotool"
         "networkmanager"
         "wheel"
