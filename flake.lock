@@ -17,17 +17,14 @@
     },
     "finix": {
       "locked": {
-        "lastModified": 1788925336,
-        "narHash": "sha256-MAN+6GJoQd7CCSGdzA/vovsj/FaTZrbEVHxoA5DE2h4=",
-        "owner": "finix-community",
-        "repo": "finix",
-        "rev": "07d94a712d63ee2ef949f2cfd5c8e0251a812966",
-        "type": "github"
+        "lastModified": 1789235845,
+        "narHash": "sha256-ANWlule1v2WzXQPnpphG3cOI1TnvZ1MK+TgTi0CshAg=",
+        "path": "/home/amr/Projects/Personal/finix",
+        "type": "path"
       },
       "original": {
-        "owner": "finix-community",
-        "repo": "finix",
-        "type": "github"
+        "path": "/home/amr/Projects/Personal/finix",
+        "type": "path"
       }
     },
     "flake-compat": {
@@ -326,11 +323,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788886125,
-        "narHash": "sha256-5rgQFUGr8GXYyyuy8ynrN39WfZzSiO/wqGWjELBOkEY=",
+        "lastModified": 1789222992,
+        "narHash": "sha256-BFMgvLl3/C+f5xA6eBwRt9nY7n1ahJkq/U0na6Oalvs=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "d6607b4eafbb92f6d494ebed3e296d4b741c0b58",
+        "rev": "7dcd32a9ace61b6cd4137af2d061976bf8b9c67d",
         "type": "github"
       },
       "original": {
@@ -401,11 +398,11 @@
         "xdg-desktop-portal-umbriel": "xdg-desktop-portal-umbriel"
       },
       "locked": {
-        "lastModified": 1788948734,
-        "narHash": "sha256-BVz7/PSZcamhvwroibyJfu3w4GicNCzfl5HDPLL6mMU=",
+        "lastModified": 1789179348,
+        "narHash": "sha256-Rr2/bnqcofsni4vMuZPti/TcuHPyyJsCYokbSmQPCBI=",
         "ref": "refs/heads/main",
-        "rev": "70f1a0b16becf070486e0bf0a4fc59db67d6133c",
-        "revCount": 878,
+        "rev": "5c4ef835c539b9e8e489abba1e9f0dd4f8a23a51",
+        "revCount": 930,
         "type": "git",
         "url": "https://github.com/noctalia-dev/umbriel"
       },

@@ -107,7 +107,7 @@
             ./modules/hosts/laptop/machine.nix
             ./modules/hosts/laptop/hardware.nix
             ./modules/hosts/laptop/packages.nix
-            #./modules/hosts/laptop/kernel.nix
+            ./modules/hosts/laptop/kernel.nix
             # Hardware
             m.hardware.nvidia
             m.hardware.asusd
@@ -139,7 +139,7 @@
             m.services.evolution
 
             # Desktop
-            m.desktop.niri
+            m.desktop.umbriel
           ];
       };
     };
