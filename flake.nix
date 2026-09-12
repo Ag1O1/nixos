@@ -136,6 +136,7 @@
             m.services.printing
             m.services.keyd
             m.services.direnv
+            m.services.evolution
 
             # Desktop
             m.desktop.niri
