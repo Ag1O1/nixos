@@ -22,7 +22,6 @@
       ];
     };
   };
-  programs.niri.enable = true;
   programs.fastfetch.enable = true;
 
   finit.runlevel = 3;
