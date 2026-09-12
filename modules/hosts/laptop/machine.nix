@@ -5,12 +5,12 @@
   pkgs,
   ...
 }: {
-  imports = [fm.gnome-keyring fm.bash fm.sysklogd fm.polkit fm.getty fm.iwd fm.niri cm.fastfetch];
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-zen4;
+  imports = [fm.gnome-keyring fm.bash fm.sysklogd fm.polkit fm.getty fm.iwd cm.fastfetch];
+  #boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-zen4;
   boot = {
     initrd = {
       #includeDefaultModules = lib.mkForce false;
-      availableKernelModules = [
+      availableKernelModules = lib.mkForce [
         "nvme"
         "xhci_pci"
         "thunderbolt"
@@ -30,11 +30,18 @@
 
   services.polkit.enable = true;
   services.getty.enable = true;
-  services.gardendevd.enable = true;
-  services.elogind.enable = true;
-  #services.seatd.enable = true;
+  services.udev.enable = true;
   services.sysklogd.enable = true;
   services.dbus.enable = true;
+
+  services.elogind = {
+    enable = true;
+    settings.Login = {
+      HandleLidSwitch = "ignore";
+      HandleLidSwitchExternalPower = "ignore";
+      HandleLidSwitchDocked = "ignore";
+    };
+  };
 
   programs = {
     bash.enable = true;
