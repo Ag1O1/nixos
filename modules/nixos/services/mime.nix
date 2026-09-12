@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   ...
 }: let
@@ -52,6 +53,7 @@ in {
     hj.xdg.config.files."mimeapps.list".text = lib.generators.toINI {} {
       "Default Applications" = defaultApplications;
     };
+    environment.systemPackages = [pkgs.xdg-utils];
   };
   options.modules.services.mime = {
     enable = lib.mkEnableOption "mime";
