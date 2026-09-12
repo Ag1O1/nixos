@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: {
-  imports = [fm.gnome-keyring fm.sudo fm.bash fm.sysklogd fm.polkit fm.getty fm.iwd fm.niri cm.fastfetch];
+  imports = [fm.gnome-keyring fm.bash fm.sysklogd fm.polkit fm.getty fm.iwd fm.niri cm.fastfetch];
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-zen4;
   boot = {
     initrd = {
@@ -39,7 +39,6 @@
 
   programs = {
     bash.enable = true;
-    sudo.enable = true;
     gnome-keyring.enable = true;
   };
 

@@ -78,6 +78,7 @@
       m.core.networking
       m.core.core-packages
       m.core.preservation
+      m.core.sudo
       m.services.mime
 
       m.services.boot
