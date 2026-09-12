@@ -10,6 +10,7 @@
     runlevels = "2345";
     conditions = "service/syslogd/ready";
     command = "${pkgs.openrgb}/bin/openrgb --noautoconnect -p keyboard";
+    restart = 0;
     user = "amr";
   };
 }
