@@ -1,13 +1,14 @@
 {
   lib,
   fm,
+  pkgs,
   ...
 }: {
-  imports = [fm.tlp fm.power-profiles-daemon];
-  services.power-profiles-daemon.enable = lib.mkForce false;
+  imports = [fm.tlp];
+  environment.systemPackages = [pkgs.tlp-pd];
   services.tlp = {
     enable = true;
-    # TODO check pd
+    pd.enable = true;
     settings = {
       # General
       NMI_WATCHDOG = 0;
